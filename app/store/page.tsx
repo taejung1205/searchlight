@@ -1,3 +1,7 @@
 export default function Page() {
-  return <text className="W2">스토어 페이지</text>
+  return (
+    <div>
+      <p className="W2">스토어 페이지</p>
+    </div>
+  );
 }

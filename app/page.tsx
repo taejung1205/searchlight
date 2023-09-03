@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 import { Countbutton, GoToStoreButton } from "@/components/button/button";
 import { useScrollY, useWindowSize } from "./utils/hooks";
 import { Footer } from "@/components/footer/footer";
+import Link from "next/link";
 
 export default function Page() {
   const [prevScrollY, setPrevScrollY] = useState(0);
@@ -13,11 +14,12 @@ export default function Page() {
   const explanationRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
-    setPrevScrollY(scrollY);
+    console.log(prevScrollY, scrollY);
+
   }, []);
 
   useEffect(() => {
-    if (prevScrollY == 0 && scrollY > 0) {
+    if (prevScrollY == 0 && scrollY > 0 && scrollY < 500) {
       scrollDown();
     }
 
@@ -52,7 +54,7 @@ export default function Page() {
       <div className={styles.landing_box} ref={landingRef}>
         <img src="/logo/logotype_web_long.svg" className={styles.logo} />
         <div className={styles.center_box}>
-          <text className="W2">TODO</text>
+          <p className="W2">TODO</p>
         </div>
         <Countbutton count={0} /> {/* TODO */}
       </div>
@@ -60,31 +62,31 @@ export default function Page() {
         <img src="/logo/logotype_web_short.svg" className={styles.small_logo} />
         <div className={styles.explanation_item}>
           <div className={styles.explanation_title}>
-            <text className="W1">
+            <p className="W1">
               SEARCHLIGHT 2023
               <br />
               서치라이트 2023
-            </text>
+            </p>
           </div>
           <div className={styles.explanation_body}>
-            <text className="W2">
+            <p className="W2">
               일시: 2023.11.00.-11.00.
               <br />
               (총 3일간) 00:00~00:00 장소: LES601 성수(서울특별시 성동구
               성수동2가 275-21)
-            </text>
+            </p>
           </div>
         </div>
         <div className={styles.explanation_item}>
           <div className={styles.explanation_title}>
-            <text className="W1">
+            <p className="W1">
               ABOUT US
               <br />
               소개
-            </text>
+            </p>
           </div>
           <div className={styles.explanation_body}>
-            <text className="W2">
+            <p className="W2">
               서치라이트 페어는 자신을 전업작가로 명명하기에 모호한, 작품 활동을
               지속하는 데 현실적인 어려움을 겪는 작가들의 작업을 소개합니다.
               <br />
@@ -112,101 +114,103 @@ export default function Page() {
               서치라이트 페어는 이들이 모두 예술시장 활성화에 기여하는
               커뮤니티의 일원이라는 점을 페어를 통해 알리고 지속가능한
               커뮤니티로 일구어 나가고자 합니다.
-            </text>
+            </p>
             <div style={{ height: "80px" }} />
-            <GoToStoreButton />
+            <Link href="/store">
+              <GoToStoreButton />
+            </Link>
           </div>
         </div>
         <div className={styles.explanation_item}>
           <div className={styles.explanation_title}>
-            <text className="W1">
+            <p className="W1">
               PROGRAMS
               <br />
               페어 프로그램
-            </text>
+            </p>
           </div>
           <div className={styles.explanation_body}>
             <div className={styles.body_with_bars}>
               <div className={styles.bar} />
-              <text className="W2">
+              <p className="W2">
                 1. 사라지는 미대생들. 디자이너와 기획자들은 그들을 위해 무엇을
                 할 수 있을까?
                 <br />
                 by. 김영지 따바프레스(주) 대표 | 00/00 00:00~00:00
-              </text>
+              </p>
               <div className={styles.bar} />
-              <text className="W2">
+              <p className="W2">
                 1. 사라지는 미대생들. 디자이너와 기획자들은 그들을 위해 무엇을
                 할 수 있을까?
                 <br />
                 by. 김영지 따바프레스(주) 대표 | 00/00 00:00~00:00
-              </text>
+              </p>
               <div className={styles.bar} />
-              <text className="W2">
+              <p className="W2">
                 1. 사라지는 미대생들. 디자이너와 기획자들은 그들을 위해 무엇을
                 할 수 있을까?
                 <br />
                 by. 김영지 따바프레스(주) 대표 | 00/00 00:00~00:00
-              </text>
+              </p>
               <div className={styles.bar} />
-              <text className="W2">
+              <p className="W2">
                 1. 사라지는 미대생들. 디자이너와 기획자들은 그들을 위해 무엇을
                 할 수 있을까?
                 <br />
                 by. 김영지 따바프레스(주) 대표 | 00/00 00:00~00:00
-              </text>
+              </p>
               <div className={styles.bar} />
             </div>
           </div>
         </div>
         <div className={styles.explanation_item}>
           <div className={styles.explanation_title}>
-            <text className="W1">
+            <p className="W1">
               WITH US
               <br />
               함께한 사람들
-            </text>
+            </p>
           </div>
           <div className={styles.explanation_body}>
             <div className={styles.body_with_bars}>
               <div style={{ display: "flex" }}>
                 <div className={styles.withus_title}>
                   <div className={styles.bar} />
-                  <text className="W2">주최</text>
+                  <p className="W2">주최</p>
                 </div>
                 <div style={{ width: "100% " }}>
                   <div className={styles.bar} />
-                  <text className="W2">LOFA SEOUL</text>
+                  <p className="W2">LOFA SEOUL</p>
                 </div>
               </div>
               <div style={{ display: "flex" }}>
                 <div className={styles.withus_title}>
                   <div className={styles.bar} />
-                  <text className="W2">참여 작가</text>
+                  <p className="W2">참여 작가</p>
                 </div>
                 <div style={{ width: "100% " }}>
                   <div className={styles.bar} />
-                  <text className="W2">바로가기 (총 00인)</text>
+                  <p className="W2">바로가기 (총 00인)</p>
                 </div>
               </div>
               <div style={{ display: "flex" }}>
                 <div className={styles.withus_title}>
                   <div className={styles.bar} />
-                  <text className="W2">스폰서</text>
+                  <p className="W2">스폰서</p>
                 </div>
                 <div style={{ width: "100% " }}>
                   <div className={styles.bar} />
-                  <text className="W2">예술경영지원센터</text>
+                  <p className="W2">예술경영지원센터</p>
                 </div>
               </div>
               <div style={{ display: "flex" }}>
                 <div className={styles.withus_title}>
                   <div className={styles.bar} />
-                  <text className="W2">만든 사람들</text>
+                  <p className="W2">만든 사람들</p>
                 </div>
                 <div style={{ width: "100% " }}>
                   <div className={styles.bar} />
-                  <text className="W2">
+                  <p className="W2">
                     TABAC PRESS{" "}
                     <span style={{ color: "#717171" }}>
                       / 기획, 운영, 홍보, 공간
@@ -224,7 +228,7 @@ export default function Page() {
                     <span style={{ color: "#717171" }}>
                       / 텍스트, 공간 기획
                     </span>
-                  </text>
+                  </p>
                 </div>
               </div>
               <div style={{ display: "flex" }}>

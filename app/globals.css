@@ -4,12 +4,12 @@
   box-sizing: border-box;
 }
 body {
-  background-color: #0F1012;
+  background-color: #0f1012;
 }
 
 .W1 {
-  color: #E8F452;
-  font-family: 'SUIT';
+  color: #e8f452;
+  font-family: "SUIT";
   font-style: normal;
   font-weight: 600;
   font-size: 23px;
@@ -18,10 +18,19 @@ body {
 }
 
 .W2 {
-  color: #FFFFFF;
-  font-family: 'SUIT';
+  color: #ffffff;
+  font-family: "SUIT";
   font-weight: 500;
   font-size: 23px;
   letter-spacing: -0.5pt;
   line-height: 1.65;
+}
+
+.FOOTER {
+  font-family: "SUIT";
+  color: var(--S_black_300, var(--S_black_300, #717171));
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 23.8px;
 }
