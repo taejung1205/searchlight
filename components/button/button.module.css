@@ -1,0 +1,37 @@
+.count_button {
+  border-radius: 36px;
+  border: 1px solid var(--S_lime_300, #e8f452);
+  background: rgba(232, 244, 82, 0);
+  display: inline-flex;
+  padding: 11.5px 34.5px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  color: #e8f452;
+  text-align: center;
+  font-family: SUIT;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32.2px;
+  cursor: pointer;
+}
+
+.go_to_store_button {
+  border-radius: 36px;
+  border: 1px solid var(--S_lime_300, #e8f452);
+  background: var(--S_lime_300, #e8f452);
+  display: inline-flex;
+  padding: 11.5px 34.5px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  color: var(--S_black_500, #0f1012);
+  text-align: center;
+  font-family: SUIT;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32.2px;
+  cursor: pointer;
+}

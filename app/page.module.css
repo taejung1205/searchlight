@@ -1,11 +1,83 @@
 .main {
   display: flex;
   flex-direction: column;
+}
+
+.landing_box {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  height: 100vh;
+}
+
+.explanation_box{
+  margin-top: 25px;
+  margin-bottom: 160px;
+  margin-left: 110px;
+  margin-right: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.explanation_item {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.explanation_title {
+  width: 230px;
+}
+
+.explanation_body {
+  width: 50vw;
+}
+
+.body_with_bars text {
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.withus_title {
+  width: 180px;
+  margin-right: 20px;
+}
+
+.bar {
+  width: 100%;
+  height: 1px;
+  background: #272727;
 }
 
 .logo {
-   height: 300px;
-   max-width: 100vw;
-   object-fit: contain; 
+  margin-top: 40px;
+  height: 30vh;
+  min-height: 200px;
+  max-width: 100vw;
+  object-fit: contain;
 }
+
+.small_logo {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.center_box {
+  display: inline-flex;
+  justify-content: center;
+  margin-top: 55px;
+  margin-bottom: 55px;
+  height: calc(70vh - 245px);
+  max-width: 100vw;
+  width: 1000px;
+  border: 1px solid white;
+  align-items: center;
+}
+
+
