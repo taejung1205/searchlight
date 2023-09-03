@@ -17,6 +17,11 @@
   cursor: pointer;
 }
 
+.count_button:hover {
+  background: #e8f452;
+  color: #0f1012;
+}
+
 .go_to_store_button {
   border-radius: 36px;
   border: 1px solid var(--S_lime_300, #e8f452);
@@ -34,4 +39,9 @@
   font-weight: 500;
   line-height: 32.2px;
   cursor: pointer;
+}
+
+.go_to_store_button:hover {
+  border: 1px solid var(--white, #fff);
+  background: var(--white, #fff);
 }
