@@ -8,6 +8,10 @@ import { Footer } from "@/components/footer/footer";
 import Link from "next/link";
 import { MOBILE_WIDTH } from "./utils/constants";
 import { Space } from "@/components/space/space";
+import {
+  SearchlightEffectBox,
+  SearchlightEffectLight,
+} from "@/components/effect/effect";
 
 export default function Page() {
   const [prevScrollY, setPrevScrollY] = useState(0);
@@ -44,14 +48,58 @@ export default function Page() {
     });
   }
 
+  function gatherSearchlight() {
+    for (let i = 1; i < 4; i++) {
+      const element = window.document.getElementById(`searchlight_${i}`);
+      if (element) {
+        element.animate(
+          [
+            {},
+            {
+              backgroundColor: "#e8f45280",
+              transform: "translate(0, 0)",
+            },
+          ],
+          {
+            duration: 1000,
+            easing: "ease-out",
+            fill: "forwards",
+          }
+        );
+      }
+    }
+    const element = window.document.getElementById(`searchlight_text`);
+    if (element) {
+      element.animate(
+        [
+          {},
+          {
+            opacity: 0,
+          },
+        ],
+        {
+          delay: 500,
+          duration: 500,
+          easing: "ease-out",
+          fill: "forwards",
+        }
+      );
+    }
+  }
+
   if (windowSize.width > MOBILE_WIDTH) {
     return (
       <main className={styles.main}>
         <div className={styles.landing_box} ref={landingRef}>
           <img src="/logo/logotype_web_long.svg" className={styles.logo} />
-          <div className={styles.center_box}>
-            <p className="W2">TODO</p>
-          </div>
+          <SearchlightEffectBox>
+            <p className="A1" onClick={gatherSearchlight} id="searchlight_text">
+              서치라이트를 켜보세요 (클릭)
+            </p>
+            <SearchlightEffectLight animType="1" id="searchlight_1" />
+            <SearchlightEffectLight animType="2" id="searchlight_2" />
+            <SearchlightEffectLight animType="3" id="searchlight_3" />
+          </SearchlightEffectBox>
           <Countbutton count={0} /> {/* TODO */}
         </div>
         <div className={styles.explanation_box} ref={explanationRef}>

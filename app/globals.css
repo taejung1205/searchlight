@@ -45,6 +45,16 @@ body {
   line-height: 28px;
 }
 
+.A1 {
+  color: #ffffff;
+  font-family: "SUIT";
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 56px;
+letter-spacing: -0.17px;
+
+}
+
 .FOOTER {
   font-family: "SUIT";
   color: var(--S_black_300, var(--S_black_300, #717171));
