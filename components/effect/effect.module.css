@@ -1,4 +1,5 @@
-.searchlight_effect_box {
+.searchlight_effect_box,
+.searchlight_effect_box_mobile {
   display: inline-flex;
   justify-content: center;
   margin-top: 55px;
@@ -7,13 +8,20 @@
   width: 100vw;
   align-items: center;
   position: relative;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
 }
 
 .searchlight_effect_light_1,
-  .searchlight_effect_light_2,
-  .searchlight_effect_light_3 {
+.searchlight_effect_light_2,
+.searchlight_effect_light_3,
+.searchlight_effect_light_1_mobile,
+.searchlight_effect_light_2_mobile,
+.searchlight_effect_light_3_mobile {
   width: calc(70vh - 245px);
   height: calc(70vh - 245px);
+  
   border-radius: 512px;
   background: var(--S_lime_300, #e8f45250);
   position: absolute;
@@ -24,15 +32,27 @@
   animation-iteration-count: infinite;
 }
 
-.searchlight_effect_light_1 {
+.searchlight_effect_light_1_mobile,
+.searchlight_effect_light_2_mobile,
+.searchlight_effect_light_3_mobile {
+  width: calc(100vw - 60px);
+  height: calc(100vw - 60px);
+  max-height: calc(70vh - 200px);
+  max-width: calc(70vh - 200px);
+}
+
+.searchlight_effect_light_1,
+.searchlight_effect_light_1_mobile {
   animation-name: scroll_anim_1;
 }
 
-.searchlight_effect_light_2 {
+.searchlight_effect_light_2,
+.searchlight_effect_light_2_mobile {
   animation-name: scroll_anim_2;
 }
 
-.searchlight_effect_light_3 {
+.searchlight_effect_light_3,
+.searchlight_effect_light_3_mobile {
   animation-name: scroll_anim_3;
 }
 
@@ -88,8 +108,8 @@
 }
 
 @keyframes gather {
-    100% {
-      transform: translate(0, 0);
-      background-color: #e8f45220;
-    }
+  100% {
+    transform: translate(0, 0);
+    background-color: #e8f45220;
   }
+}

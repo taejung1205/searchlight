@@ -92,13 +92,15 @@ export default function Page() {
       <main className={styles.main}>
         <div className={styles.landing_box} ref={landingRef}>
           <img src="/logo/logotype_web_long.svg" className={styles.logo} />
-          <SearchlightEffectBox>
-            <p className="A1" onClick={gatherSearchlight} id="searchlight_text">
-              서치라이트를 켜보세요 (클릭)
-            </p>
+          <SearchlightEffectBox onClick={gatherSearchlight}>
             <SearchlightEffectLight animType="1" id="searchlight_1" />
             <SearchlightEffectLight animType="2" id="searchlight_2" />
             <SearchlightEffectLight animType="3" id="searchlight_3" />
+            <p className="W1" id="searchlight_text">
+              서치라이트를 켜보세요!
+              <br />
+              (click!)
+            </p>
           </SearchlightEffectBox>
           <Countbutton count={0} /> {/* TODO */}
         </div>
@@ -302,10 +304,17 @@ export default function Page() {
             src="/logo/logotype_mobile_long.svg"
             className={styles.logo_mobile}
           />
-          <div className={styles.center_box}>
-            <p className="W2">TODO</p>
+          <SearchlightEffectBox onClick={gatherSearchlight} isMobile>
+            <SearchlightEffectLight animType="1" id="searchlight_1" isMobile />
+            <SearchlightEffectLight animType="2" id="searchlight_2" isMobile />
+            <p className="M1" id="searchlight_text">
+              서치라이트를 켜보세요! <br /> (click!)
+            </p>
+          </SearchlightEffectBox>
+          <div style={{ position: "absolute", bottom: "40px" }}>
+            <Countbutton count={0} isMobile />
           </div>
-          <Countbutton count={0} isMobile /> {/* TODO */}
+          {/* TODO */}
         </div>
         <div className={styles.explanation_box_mobile} ref={explanationRef}>
           <img
