@@ -13,7 +13,7 @@ body {
   font-style: normal;
   font-weight: 600;
   font-size: 23px;
-  letter-spacing: -0.115pt;
+  letter-spacing: -0.115px;
   line-height: 1.65;
 }
 
@@ -22,8 +22,27 @@ body {
   font-family: "SUIT";
   font-weight: 500;
   font-size: 23px;
-  letter-spacing: -0.5pt;
+  letter-spacing: -0.115px;
   line-height: 1.65;
+}
+
+.M1 {
+  color: #e8f452;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: -0.085px;
+  line-height: 28px;
+}
+
+.M2 {
+  color: #ffffff;
+  font-family: "SUIT";
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: -0.085px;
+  line-height: 28px;
 }
 
 .FOOTER {

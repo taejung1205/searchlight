@@ -20,12 +20,30 @@
   align-items: flex-start;
 }
 
+.explanation_box_mobile{
+  margin-top: 60px;
+  margin-bottom: 90px;
+  margin-left: 32px;
+  margin-right: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .explanation_item {
   margin-top: 40px;
   margin-bottom: 40px;
   display: flex;
   width: 100%;
   justify-content: space-between;
+}
+
+.explanation_item_mobile {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .explanation_title {
@@ -61,10 +79,23 @@
   object-fit: contain;
 }
 
+.logo_mobile {
+  padding: 36px;
+  width: 100%;
+  object-fit: contain;
+}
+
 .small_logo {
   margin-top: 40px;
   margin-bottom: 40px;
   height: 48px;
+  object-fit: contain;
+}
+
+.small_logo_mobile {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  height: 36px;
   object-fit: contain;
 }
 

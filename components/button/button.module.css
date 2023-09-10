@@ -17,18 +17,43 @@
   cursor: pointer;
 }
 
+.count_button_mobile {
+  border-radius: 36px;
+  border: 1px solid var(--S_lime_300, #e8f452);
+  display: inline-flex;
+  height: 38px;
+  padding: 10.2px 17px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  color: #e8f452;
+  text-align: center;
+  font-family: SUIT;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 17px;
+  cursor: pointer;
+}
+
 .count_button:hover {
   background: #e8f452;
   color: #0f1012;
 }
 
-.go_to_store_button {
+.count_button_mobile:hover {
+  background: #e8f452;
+  color: #0f1012;
+}
+
+.go_to_store_button,.go_to_store_button_mobile {
   border-radius: 36px;
   border: 1px solid var(--S_lime_300, #e8f452);
   background: var(--S_lime_300, #e8f452);
   display: inline-flex;
   padding: 11.5px 34.5px;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   gap: 10px;
   color: var(--S_black_500, #0f1012);
@@ -39,6 +64,13 @@
   font-weight: 500;
   line-height: 32.2px;
   cursor: pointer;
+}
+
+.go_to_store_button_mobile {
+  padding: 10.2px 17px;
+  font-size: 17px;
+  line-height: 17px;
+  width: 100%;
 }
 
 .go_to_store_button:hover {
