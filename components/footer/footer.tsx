@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 import styles from "./footer.module.css";
 import { useWindowSize } from "@/app/utils/hooks";
