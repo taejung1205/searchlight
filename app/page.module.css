@@ -1,6 +1,7 @@
 .main {
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 .landing_box {
