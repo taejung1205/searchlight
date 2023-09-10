@@ -10,25 +10,18 @@ import Link from "next/link";
 export default function Page() {
   const [prevScrollY, setPrevScrollY] = useState(0);
   const scrollY = useScrollY();
+  const windowSize = useWindowSize();
   const landingRef = useRef<null | HTMLDivElement>(null);
   const explanationRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
     console.log(prevScrollY, scrollY);
-
   }, []);
 
   useEffect(() => {
     if (prevScrollY == 0 && scrollY > 0 && scrollY < 500) {
       scrollDown();
     }
-
-    // if (
-    //   prevScrollY > (explanationRef.current?.offsetTop ?? 0) &&
-    //   scrollY < (explanationRef.current?.offsetTop ?? 0)
-    // ) {
-    //   scrollUp();
-    // }
     setPrevScrollY(scrollY);
   }, [scrollY]);
 
