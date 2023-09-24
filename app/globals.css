@@ -3,8 +3,15 @@
 * {
   box-sizing: border-box;
 }
+
 body {
-  background-color: #0f1012;
+  background-color: #ffffff;
+  margin: 0px;
+  padding: 0px;
+}
+
+a {
+  text-decoration: none;
 }
 
 .W1 {
@@ -51,8 +58,37 @@ body {
   font-weight: 600;
   font-size: 34px;
   line-height: 56px;
-letter-spacing: -0.17px;
+  letter-spacing: -0.17px;
+}
 
+.H1 {
+  font-family: SUIT;
+  font-size: 33px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 52.8px; /* 160% */
+  letter-spacing: -0.165px;
+  color: #0f1012;
+}
+
+.P1 {
+  font-family: SUIT;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px; /* 164.706% */
+  letter-spacing: -0.085px;
+  color: #0f1012;
+}
+
+.P2 {
+  font-family: SUIT;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28.05px; /* 165% */
+  letter-spacing: -0.085px;
+  color: #0f1012;
 }
 
 .FOOTER {

@@ -25,3 +25,17 @@ export function GoToStoreButton({ isMobile = false }: { isMobile?: boolean }) {
     </div>
   );
 }
+
+export function ButtonImportant({
+  text,
+  onClick,
+}: {
+  text: string;
+  onClick: () => void;
+}) {
+  return (
+    <div className={styles.button_important} onClick={onClick}>
+      {text}
+    </div>
+  );
+}

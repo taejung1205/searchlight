@@ -1,0 +1,15 @@
+
+[
+        {
+            "index": 0,
+            "name": "이명진",
+            "email": "llmjmj1210@naver.com",
+            "abstract": "한줄 요약",
+            "intro": "이명진은 서울을 기반으로 도자 작업을 하고, 동시에 세라믹 라이프스타일 브랜드 떼르에떼르를 운영중이다. 홍익대학교 도예유리과 학사를 졸업 후 2020년부터 건축적인 매스를 공예적인 시각으로 재해석하는 미니멀한 조형작업을 시작했다. 그의 작품은 점토의 물성을 그대로 살리는 코일링 기법이 주를 이루며, 건축물의 형태에서 오직 비례와 질감들의 미묘한 변화를 꾀한다.",
+            "instagram": "@ml.c___",
+            "website": "포트폴리오 사이트",
+            "tag": ["test1", "test2"],
+            "imageFileName": ["이명진_tilted vessel 09.jpeg", "이명진_tilted vessel 06.jpeg"],
+            "imageCaption": ["tilted vessel 09", "tilted vessel 06"]
+        }
+]

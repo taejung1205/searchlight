@@ -1,0 +1,17 @@
+.tag_selected {
+  display: inline-flex;
+  height: 48px;
+  padding: 4.6px 23px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 80px;
+  border: 1px solid #717171;
+  margin: 7.5px;
+  user-select: none;
+}
+
+.tag_deselected {
+  background: #717171;
+  color: #ffffff;
+}
