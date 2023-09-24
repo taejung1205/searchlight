@@ -47,7 +47,8 @@
   color: #0f1012;
 }
 
-.go_to_store_button,.go_to_store_button_mobile {
+.go_to_store_button,
+.go_to_store_button_mobile {
   border-radius: 36px;
   border: 1px solid var(--S_lime_300, #e8f452);
   background: var(--S_lime_300, #e8f452);
@@ -76,4 +77,29 @@
 .go_to_store_button:hover {
   border: 1px solid var(--white, #fff);
   background: var(--white, #fff);
+}
+
+.button_important {
+  display: inline-flex;
+  height: 48px;
+  padding: 11.5px 23px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 80px;
+  border: 1px solid #0f1012;
+  background: #0f1012;
+  cursor: pointer;
+  font-family: SUIT;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px; /* 164.706% */
+  letter-spacing: -0.085px;
+  color: #fff;
+}
+
+.button_important:hover {
+  background: #fff;
+  color: #0f1012;
 }
