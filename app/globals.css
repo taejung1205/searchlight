@@ -66,7 +66,17 @@ a {
   font-size: 33px;
   font-style: normal;
   font-weight: 600;
-  line-height: 52.8px; /* 160% */
+  line-height: 49.5px; /* 150% */
+  letter-spacing: -0.165px;
+  color: #0f1012;
+}
+
+.H2 {
+  font-family: SUIT;
+  font-size: 33px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 49.5px; /* 150% */
   letter-spacing: -0.165px;
   color: #0f1012;
 }
@@ -98,4 +108,13 @@ a {
   font-style: normal;
   font-weight: 500;
   line-height: 23.8px;
+}
+
+.FOOTER_2 {
+  color: var(--S_gray_500, #0F1012);
+  font-family: SUIT;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 19.6px; /* 140% */
 }
