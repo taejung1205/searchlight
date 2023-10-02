@@ -3,20 +3,41 @@ import styles from "./header.module.css";
 import { Space } from "../space/space";
 import Link from "next/link";
 
-export function Header({ currentPage }: { currentPage: string }) {
+export function Header({
+  currentPage,
+  isFixed = false,
+  isMobile = false,
+}: {
+  currentPage: string;
+  isFixed?: boolean;
+  isMobile?: boolean;
+}) {
   const [isMenuOpened, setIsMenuOpened] = useState<boolean>(false);
   return (
-    <div className={styles.header_box}>
-      <img src="/logo/short_logotype.svg" className={styles.logo} />
-      <img
-        src="/icon/menu_open.svg"
-        style={{ cursor: "pointer" }}
-        onClick={() => {
-          setIsMenuOpened(true);
-        }}
-      />
+    <>
+      <div className={isFixed ? styles.fixed_filler : styles.none} />
+      <div
+        className={
+          isMobile
+            ? isFixed
+              ? styles.header_box_fixed_mobile
+              : styles.header_box_mobile
+            : isFixed
+            ? styles.header_box_fixed
+            : styles.header_box
+        }
+      >
+        <img src="/logo/short_logotype.svg" className={styles.logo} />
+        <img
+          src="/icon/menu_open.svg"
+          style={{ cursor: "pointer" }}
+          onClick={() => {
+            setIsMenuOpened(true);
+          }}
+        />
+      </div>
       {isMenuOpened ? (
-        <div className={styles.menu_box}>
+        <div className={isMobile ? styles.menu_box_mobile :styles.menu_box}>
           <img
             src="/icon/menu_close.svg"
             style={{ cursor: "pointer" }}
@@ -40,10 +61,10 @@ export function Header({ currentPage }: { currentPage: string }) {
               }`}</p>
             </Link>
             <div className={styles.line_narrow} />
-            <Link href={"/artist/image"}>
-              <p className="P1" style={{ color: "#fff" }}>{`아티스트`}</p>
-              <div className={styles.line_thick} />
-            </Link>
+            <p className="P1" style={{ color: "#fff" }}>{`아티스트 ${
+              currentPage == "detail" ? "●" : ""
+            }`}</p>
+            <div className={styles.line_thick} />
             <Link href={"/artist/image"}>
               <p className="P2" style={{ color: "#BFBFBF" }}>{`이미지로 보기 ${
                 currentPage == "artist_image" ? "●" : ""
@@ -60,6 +81,6 @@ export function Header({ currentPage }: { currentPage: string }) {
       ) : (
         <></>
       )}
-    </div>
+    </>
   );
 }

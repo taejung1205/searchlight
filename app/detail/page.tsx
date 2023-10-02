@@ -8,15 +8,20 @@ import { useState } from "react";
 import { Space } from "@/components/space/space";
 import { NonButtonTag } from "@/components/tag/tag";
 import { ButtonImportant } from "@/components/button/button";
+import { useScrollY, useWindowSize } from "../utils/hooks";
+import Link from "next/link";
+import { MOBILE_WIDTH } from "../utils/constants";
 
 export default function Page() {
+  const scrollY = useScrollY();
   const searchParams = useSearchParams();
+  const windowSize = useWindowSize();
   const index = searchParams.get("index") ?? "";
 
   if (index.length == 0) {
     return (
       <main>
-        <Header currentPage="detail"/>
+        <Header currentPage="detail" />
         <div className={style.error_page}>
           <p className="H1">잘못된 접근입니다.</p>
         </div>
@@ -32,7 +37,11 @@ export default function Page() {
 
   return (
     <div>
-      <Header currentPage="detail" />
+      <Header
+        currentPage="detail"
+        isFixed={scrollY > 100}
+        isMobile={windowSize.width < MOBILE_WIDTH}
+      />
       <div className={style.main}>
         <ArtistName name={artistData.name} />
         <Space h={30} />
@@ -52,8 +61,7 @@ export default function Page() {
         <ContactBox artistData={artistData} />
         <Space h={30} />
         <TagBox tagList={artistData.tag} />
-        <Space h={30} />
-        <NextPageBox />
+        <Space h={120} />
       </div>
       <Footer />
     </div>
@@ -80,37 +88,38 @@ function ArtworkImageBox({
   return (
     <div className={style.artwork_image_box}>
       <img
-        src="/icon/left.svg"
-        onClick={() => {
-          if (imageIndex == 0) {
-            setImageIndex(artistData.imageFileName.length - 1);
-          } else {
-            setImageIndex(imageIndex - 1);
-          }
-        }}
-        style={{ cursor: "pointer" }}
+        src={`/artwork/${artistData.name}/${artistData.imageFileName[imageIndex]}`}
+        className={style.artwork_image}
       />
-      <div>
+      <div style={{ display: "flex" }}>
         <img
-          src={`/artwork/${artistData.name}/${artistData.imageFileName[imageIndex]}`}
-          className={style.artwork_image}
+          src="/icon/left.svg"
+          onClick={() => {
+            if (imageIndex == 0) {
+              setImageIndex(artistData.imageFileName.length - 1);
+            } else {
+              setImageIndex(imageIndex - 1);
+            }
+          }}
+          style={{ cursor: "pointer" }}
         />
+        <Space w={30} />
         <p className="FOOTER" style={{ textAlign: "center" }}>{`${
           imageIndex + 1
         } / ${artistData.imageFileName.length}`}</p>
+        <Space w={30} />
+        <img
+          src="/icon/right.svg"
+          onClick={() => {
+            if (imageIndex == artistData.imageFileName.length - 1) {
+              setImageIndex(0);
+            } else {
+              setImageIndex(imageIndex + 1);
+            }
+          }}
+          style={{ cursor: "pointer" }}
+        />
       </div>
-
-      <img
-        src="/icon/right.svg"
-        onClick={() => {
-          if (imageIndex == artistData.imageFileName.length - 1) {
-            setImageIndex(0);
-          } else {
-            setImageIndex(imageIndex + 1);
-          }
-        }}
-        style={{ cursor: "pointer" }}
-      />
     </div>
   );
 }
@@ -156,9 +165,41 @@ function ContactBox({ artistData }: { artistData: any }) {
       <Space h={15} />
       <p className="FOOTER">contact</p>
       <Space h={30} />
-      <p className="P2">{`이메일: ${artistData.email}`}</p>
-      <p className="P2">{`포트폴리오: ${artistData.website}`}</p>
-      <p className="P2">{`SNS: ${artistData.instagram}`}</p>
+      <div style={{ display: "flex" }}>
+        <p className="P2">{`이메일:`}</p>
+        <Space w={10} />
+        <a href={`mailto:${artistData.email}`}>
+          <p
+            className="P2"
+            style={{ textDecoration: "underline" }}
+          >{`${artistData.email}`}</p>
+        </a>
+      </div>
+
+      {artistData.website.length > 0 ? (
+        <div style={{ display: "flex" }}>
+          <p className="P2">{`포트폴리오:`}</p>
+          <Space w={10} />
+          <a href={`https://${artistData.website}`}>
+            <p
+              className="P2"
+              style={{ textDecoration: "underline" }}
+            >{`${artistData.website}`}</p>
+          </a>
+        </div>
+      ) : (
+        <></>
+      )}
+      <div style={{ display: "flex" }}>
+        <p className="P2">{`SNS:`}</p>
+        <Space w={10} />
+        <a href={`https://${artistData.instagram}`}>
+          <p
+            className="P2"
+            style={{ textDecoration: "underline" }}
+          >{`${artistData.instagram}`}</p>
+        </a>
+      </div>
       <Space h={30} />
       <ButtonImportant
         text="작가 공유하기"
@@ -186,9 +227,4 @@ function TagBox({ tagList }: { tagList: string[] }) {
       </div>
     </div>
   );
-}
-
-function NextPageBox() {
-  //TODO
-  return <div></div>;
 }
