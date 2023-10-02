@@ -35,5 +35,53 @@
             "tag": ["test1"],
             "imageFileName": ["이나영_Wind 4.jpg", "이나영_Horn.jpg", "이나영_Twins 2.jpg"],
             "imageCaption": ["Wind 4", "Horn", "Twins 2"]
+        },
+        {
+            "index": 3,
+            "name": "이나영",
+            "email": "eenayoungdoza@gmail.com",
+            "abstract": "한줄 요약",
+            "intro": "이나영은 색감과 물성에 대해 탐구하고 그로부터 파생된 모티브로 페인팅과 보다 촉각적인 조형물(오브제)을 만드는 작업을 하고있다. 이나영도자의 작업들은 무수히 많은 색깔들 사이에서 선택되어진 색, 그리고 작가 나름의 알맞은 실루엣을 찾는 실험의 연속 속에서 나온 조각들의 이야기이다.",
+            "instagram": "www.instagram.com/ee_na_young_doza",
+            "website": "test.com",
+            "tag": ["test1"],
+            "imageFileName": ["이나영_Wind 4.jpg", "이나영_Horn.jpg", "이나영_Twins 2.jpg"],
+            "imageCaption": ["Wind 4", "Horn", "Twins 2"]
+        },
+        {
+            "index": 4,
+            "name": "이나영",
+            "email": "eenayoungdoza@gmail.com",
+            "abstract": "한줄 요약",
+            "intro": "이나영은 색감과 물성에 대해 탐구하고 그로부터 파생된 모티브로 페인팅과 보다 촉각적인 조형물(오브제)을 만드는 작업을 하고있다. 이나영도자의 작업들은 무수히 많은 색깔들 사이에서 선택되어진 색, 그리고 작가 나름의 알맞은 실루엣을 찾는 실험의 연속 속에서 나온 조각들의 이야기이다.",
+            "instagram": "www.instagram.com/ee_na_young_doza",
+            "website": "test.com",
+            "tag": ["test1"],
+            "imageFileName": ["이나영_Wind 4.jpg", "이나영_Horn.jpg", "이나영_Twins 2.jpg"],
+            "imageCaption": ["Wind 4", "Horn", "Twins 2"]
+        },
+        {
+            "index": 5,
+            "name": "이나영",
+            "email": "eenayoungdoza@gmail.com",
+            "abstract": "한줄 요약",
+            "intro": "이나영은 색감과 물성에 대해 탐구하고 그로부터 파생된 모티브로 페인팅과 보다 촉각적인 조형물(오브제)을 만드는 작업을 하고있다. 이나영도자의 작업들은 무수히 많은 색깔들 사이에서 선택되어진 색, 그리고 작가 나름의 알맞은 실루엣을 찾는 실험의 연속 속에서 나온 조각들의 이야기이다.",
+            "instagram": "www.instagram.com/ee_na_young_doza",
+            "website": "test.com",
+            "tag": ["test1"],
+            "imageFileName": ["이나영_Wind 4.jpg", "이나영_Horn.jpg", "이나영_Twins 2.jpg"],
+            "imageCaption": ["Wind 4", "Horn", "Twins 2"]
+        },
+        {
+            "index": 6,
+            "name": "이나영",
+            "email": "eenayoungdoza@gmail.com",
+            "abstract": "한줄 요약",
+            "intro": "이나영은 색감과 물성에 대해 탐구하고 그로부터 파생된 모티브로 페인팅과 보다 촉각적인 조형물(오브제)을 만드는 작업을 하고있다. 이나영도자의 작업들은 무수히 많은 색깔들 사이에서 선택되어진 색, 그리고 작가 나름의 알맞은 실루엣을 찾는 실험의 연속 속에서 나온 조각들의 이야기이다.",
+            "instagram": "www.instagram.com/ee_na_young_doza",
+            "website": "test.com",
+            "tag": ["test1"],
+            "imageFileName": ["이나영_Wind 4.jpg", "이나영_Horn.jpg", "이나영_Twins 2.jpg"],
+            "imageCaption": ["Wind 4", "Horn", "Twins 2"]
         }
 ]
