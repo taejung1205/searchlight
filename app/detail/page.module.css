@@ -15,16 +15,19 @@
 }
 
 .artist_name_box {
-  border: 1px solid #bfbfbf;
+  border-top: 1px solid #bfbfbf;
+  border-bottom: 1px solid #bfbfbf;
   display: flex;
   width: 100%;
+  height: 62px;
   justify-content: center;
   align-items: center;
   align-content: center;
   flex-wrap: wrap;
 }
 
-.artwork_image_box {
+.artwork_image_box,
+.artwork_image_box_mobile {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,9 +35,19 @@
   width: calc(100% - 230px);
 }
 
-.artwork_image {
+.artwork_image_box_mobile {
+  width: calc(100% - 60px);
+}
+
+.artwork_image,
+.artwork_image_mobile {
   height: 480px;
+  max-width: 100%;
   object-fit: contain;
+}
+
+.artwork_image_mobile {
+  height: 330px;
 }
 
 .line {
@@ -43,9 +56,14 @@
   background: #bfbfbf;
 }
 
-.items_box {
+.items_box,
+.items_box_mobile {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: calc(100% - 230px);
+}
+
+.items_box_mobile {
+  width: calc(100% - 60px);
 }

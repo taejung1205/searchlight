@@ -17,6 +17,7 @@ export default function Page() {
   const searchParams = useSearchParams();
   const windowSize = useWindowSize();
   const index = searchParams.get("index") ?? "";
+  const isMobile = windowSize.width < MOBILE_WIDTH;
 
   if (index.length == 0) {
     return (
@@ -40,7 +41,7 @@ export default function Page() {
       <Header
         currentPage="detail"
         isFixed={scrollY > 100}
-        isMobile={windowSize.width < MOBILE_WIDTH}
+        isMobile={isMobile}
       />
       <div className={style.main}>
         <ArtistName name={artistData.name} />
@@ -49,18 +50,23 @@ export default function Page() {
           imageIndex={imageIndex}
           setImageIndex={setImageIndex}
           artistData={artistData}
+          isMobile={isMobile}
         />
         <Space h={30} />
         <IntroductionBox
           abstract={artistData.abstract}
           intro={artistData.intro}
+          screenWidth={windowSize.width}
         />
         <Space h={30} />
-        <ArtworksBox imageCaptionList={artistData.imageCaption} />
+        <ArtworksBox
+          imageCaptionList={artistData.imageCaption}
+          isMobile={isMobile}
+        />
         <Space h={30} />
-        <ContactBox artistData={artistData} />
+        <ContactBox artistData={artistData} isMobile={isMobile} />
         <Space h={30} />
-        <TagBox tagList={artistData.tag} />
+        <TagBox tagList={artistData.tag} isMobile={isMobile} />
         <Space h={120} />
       </div>
       <Footer />
@@ -80,18 +86,24 @@ function ArtworkImageBox({
   imageIndex,
   setImageIndex,
   artistData,
+  isMobile = false,
 }: {
   imageIndex: number;
   setImageIndex: (val: number) => void;
   artistData: any;
+  isMobile?: boolean;
 }) {
   return (
-    <div className={style.artwork_image_box}>
+    <div
+      className={
+        isMobile ? style.artwork_image_box_mobile : style.artwrok_image_box
+      }
+    >
       <img
         src={`/artwork/${artistData.name}/${artistData.imageFileName[imageIndex]}`}
-        className={style.artwork_image}
+        className={isMobile ? style.artwork_image_mobile : style.artwork_image}
       />
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <img
           src="/icon/left.svg"
           onClick={() => {
@@ -127,12 +139,19 @@ function ArtworkImageBox({
 function IntroductionBox({
   abstract,
   intro,
+  screenWidth,
 }: {
   abstract: string;
   intro: string;
+  screenWidth: number;
 }) {
   return (
-    <div style={{ width: "710px", textAlign: "center" }}>
+    <div
+      style={{
+        width: screenWidth > MOBILE_WIDTH ? "710px" : `${screenWidth - 60}px`,
+        textAlign: "center",
+      }}
+    >
       <p className="P1">{`"${abstract}"`}</p>
       <Space h={30} />
       <p className="P2">{intro}</p>
@@ -140,9 +159,15 @@ function IntroductionBox({
   );
 }
 
-function ArtworksBox({ imageCaptionList }: { imageCaptionList: string[] }) {
+function ArtworksBox({
+  imageCaptionList,
+  isMobile,
+}: {
+  imageCaptionList: string[];
+  isMobile: boolean;
+}) {
   return (
-    <div className={style.items_box}>
+    <div className={isMobile ? style.items_box_mobile : style.items_box}>
       <div className={style.line} />
       <Space h={15} />
       <p className="FOOTER">artworks</p>
@@ -158,9 +183,15 @@ function ArtworksBox({ imageCaptionList }: { imageCaptionList: string[] }) {
   );
 }
 
-function ContactBox({ artistData }: { artistData: any }) {
+function ContactBox({
+  artistData,
+  isMobile,
+}: {
+  artistData: any;
+  isMobile: boolean;
+}) {
   return (
-    <div className={style.items_box}>
+    <div className={isMobile ? style.items_box_mobile : style.items_box}>
       <div className={style.line} />
       <Space h={15} />
       <p className="FOOTER">contact</p>
@@ -213,14 +244,23 @@ function ContactBox({ artistData }: { artistData: any }) {
   );
 }
 
-function TagBox({ tagList }: { tagList: string[] }) {
+function TagBox({
+  tagList,
+  isMobile,
+}: {
+  tagList: string[];
+  isMobile: boolean;
+}) {
   return (
-    <div className={style.items_box}>
+    <div
+      className={isMobile ? style.items_box_mobile : style.items_box}
+      style={{ textAlign: "center" }}
+    >
       <div className={style.line} />
       <Space h={15} />
-      <p className="FOOTER">contact</p>
+      <p className="FOOTER">tags</p>
       <Space h={30} />
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "inline-block" }}>
         {tagList.map((item, index) => {
           return <NonButtonTag tag={item} />;
         })}
