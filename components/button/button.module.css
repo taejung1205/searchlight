@@ -103,3 +103,14 @@
   background: #fff;
   color: #0f1012;
 }
+
+.pricetag_default {
+  position: relative;
+  width: 86px;
+  height: 42px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  cursor: pointer;
+}

@@ -11,6 +11,10 @@ export function getRandomOrder(count: number) {
   return arr;
 }
 
+export function getRandomInteger(count: number){
+  return Math.floor(Math.random() * count);
+}
+
 export function getShuffledArray(arr: any[]) {
   const shuffledArr = arr.slice(); // 원본 배열 복사
 

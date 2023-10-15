@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import styles from "./button.module.css";
 
 export function Countbutton({
@@ -36,6 +37,25 @@ export function ButtonImportant({
   return (
     <div className={styles.button_important} onClick={onClick}>
       {text}
+    </div>
+  );
+}
+
+export function PricetagButton({
+  text,
+  onClick,
+  style,
+}: {
+  text: string;
+  onClick: () => void;
+  style: CSSProperties;
+}) {
+  return (
+    <div className={styles.pricetag_default} onClick={onClick} style={style}>
+      <img src="/icon/pricetag_default.png" style={{ position: "absolute", top: 0, left: 0 }} />
+      <div className="B" style={{ color: "#fff", zIndex: 1, position: "absolute" }}>
+        {text}
+      </div>
     </div>
   );
 }
