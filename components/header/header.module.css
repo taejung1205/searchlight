@@ -4,8 +4,10 @@
 .header_box_fixed_mobile {
   display: flex;
   width: 100%;
-  padding: 15px 115px;
+  padding: 15px 30px;
   justify-content: space-between;
+  border-bottom: 1px solid #bfbfbf;
+  z-index: 1;
 }
 
 .header_box_mobile,
@@ -53,6 +55,7 @@
   animation-duration: 0.5s;
   animation-timing-function: ease-out;
   animation-name: menu_anim;
+  z-index: 1;
 }
 
 .menu_box_mobile {
