@@ -34,7 +34,7 @@ export default function Page() {
   return (
     <div>
       <Header
-        currentPage="artist_image"
+        currentPage="/artist/image"
         isFixed={scrollY > 100}
         isMobile={isMobile}
       />

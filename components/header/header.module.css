@@ -40,7 +40,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 530px;
+  width: 100vw;
   height: 100vh;
   background-color: #0f1012;
   padding-left: 115px;
@@ -48,7 +48,8 @@
   padding-top: 40px;
   display: flex;
   flex-direction: column;
-  align-items: end;
+  justify-content: center;
+  align-items: center;
   animation-duration: 0.5s;
   animation-timing-function: ease-out;
   animation-name: menu_anim;
@@ -58,28 +59,30 @@
   padding-left: 30px;
   padding-right: 30px;
   padding-top: 15px;
-  width: 360px;
-  max-width: 100vw;
 }
 
-.menu_item_box {
-  width: 100%;
-  margin-top: 10px;
+.menu_item_box,
+.menu_item_box_mobile {
   display: flex;
-  flex-direction: column;
   align-items: stretch;
 }
 
-.line_thick {
-  height: 1.5px;
-  width: 100%;
-  background-color: #fff;
+.menu_item_box_mobile {
+  flex-direction: column;
+}
+
+.menu_close_button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
 }
 
 .line_narrow {
   height: 1px;
-  width: 100%;
-  background-color: #bfbfbf;
+  width: 300px;
+  max-width: calc(100vw - 60px);
+  background-color: #fff;
 }
 
 @keyframes header_anim {

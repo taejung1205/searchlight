@@ -37,45 +37,43 @@ export function Header({
         />
       </div>
       {isMenuOpened ? (
-        <div className={isMobile ? styles.menu_box_mobile :styles.menu_box}>
+        <div className={isMobile ? styles.menu_box_mobile : styles.menu_box}>
           <img
             src="/icon/menu_close.svg"
-            style={{ cursor: "pointer" }}
+            className={styles.menu_close_button}
             onClick={() => {
               setIsMenuOpened(false);
             }}
           />
-          <Space h={40} />
-          <div className={styles.menu_item_box}>
-            <Link href={"/"}>
-              <p className="P1" style={{ color: "#fff" }}>{`서치라이트 ${
-                currentPage == "home" ? "●" : ""
-              }`}</p>
-            </Link>
-            <div className={styles.line_thick} />
-            <p className="P1" style={{ color: "#fff" }}>{`페어`}</p>
-            <div className={styles.line_narrow} />
-            <Link href={"/fair/2023"}>
-              <p className="P2" style={{ color: "#BFBFBF" }}>{`2023년 ${
-                currentPage == "fair_2023" ? "●" : ""
-              }`}</p>
-            </Link>
-            <div className={styles.line_narrow} />
-            <p className="P1" style={{ color: "#fff" }}>{`아티스트 ${
-              currentPage == "detail" ? "●" : ""
-            }`}</p>
-            <div className={styles.line_thick} />
-            <Link href={"/artist/image"}>
-              <p className="P2" style={{ color: "#BFBFBF" }}>{`이미지로 보기 ${
-                currentPage == "artist_image" ? "●" : ""
-              }`}</p>
-            </Link>
-            <div className={styles.line_narrow} />
-            <Link href={"/artist/tag"}>
-              <p className="P2" style={{ color: "#BFBFBF" }}>{`태그로 보기 ${
-                currentPage == "artist_tag" ? "●" : ""
-              }`}</p>
-            </Link>
+          <div className={isMobile ?  styles.menu_item_box_mobile : styles.menu_item_box}>
+            <div className="A1" style={{color: "#fff"}}>SEARCHLIGHT</div>
+            <Space w={200} h={50} />
+            <div>
+              <div className="D1" style={{ color: "#fff" }}>{`FAIR`}</div>
+              <Space h={10}/>
+              <div className={styles.line_narrow} />
+              <Space h={13}/>
+              <Link href={"/fair/2023"}>
+                <div className="A1" style={{ color: "#fff" }}>{`2023년 ${
+                  currentPage == "/fair/2023" ? "●" : ""
+                }`}</div>
+              </Link>
+              <Space h={30}/>
+              <div className="D1" style={{ color: "#fff" }}>{`ARTIST ${
+                currentPage == "/detail" ? "●" : ""
+              }`}</div>
+              <Space h={10}/>
+              <div className={styles.line_narrow} />
+              <Space h={13}/>
+              <Link href={"/artist/image"}>
+                <div
+                  className="A1"
+                  style={{ color: "#fff" }}
+                >{`이미지로 보기 ${
+                  currentPage == "/artist/image" ? "●" : ""
+                }`}</div>
+              </Link>
+            </div>
           </div>
         </div>
       ) : (
