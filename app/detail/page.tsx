@@ -22,7 +22,7 @@ export default function Page() {
   if (index.length == 0) {
     return (
       <main>
-        <Header currentPage="detail" />
+        <Header currentPage="/detail" />
         <div className={style.error_page}>
           <p className="H1">잘못된 접근입니다.</p>
         </div>
@@ -39,7 +39,7 @@ export default function Page() {
   return (
     <div>
       <Header
-        currentPage="detail"
+        currentPage="/detail"
         isFixed={scrollY > 100}
         isMobile={isMobile}
       />
