@@ -18,10 +18,14 @@ export default function Page() {
   function selectPage(currentPage: string) {
     switch (currentPage) {
       case "Splash":
-        return <SplashImages onClick={() => setCurrentPage("Home")} />;
+        return (
+          <Suspense fallback={<></>}>
+            <SplashImages onClick={() => setCurrentPage("Home")} />
+          </Suspense>
+        );
       case "Home":
         return (
-          <Suspense fallback={<p>Loading...</p>}>
+          <Suspense fallback={<></>}>
             <Home pattern={pattern} setCurrentPage={setCurrentPage} />
           </Suspense>
         );
