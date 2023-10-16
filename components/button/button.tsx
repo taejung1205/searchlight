@@ -1,5 +1,6 @@
 import { CSSProperties } from "react";
 import styles from "./button.module.css";
+import Image from "next/image";
 
 export function Countbutton({
   count,
@@ -52,8 +53,17 @@ export function PricetagButton({
 }) {
   return (
     <div className={styles.pricetag_default} onClick={onClick} style={style}>
-      <img src="/icon/pricetag_default.png" style={{ position: "absolute", top: 0, left: 0 }} />
-      <div className="B" style={{ color: "#fff", zIndex: 1, position: "absolute" }}>
+      <Image
+        src="/icon/pricetag_default.png"
+        alt="loading..."
+        style={{ position: "absolute", top: 0, left: 0 }}
+        priority
+        fill={true}
+      />
+      <div
+        className="B"
+        style={{ color: "#fff", zIndex: 1, position: "absolute" }}
+      >
         {text}
       </div>
     </div>

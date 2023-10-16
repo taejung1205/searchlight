@@ -105,5 +105,12 @@
 .logo {
     padding-top: 20px;
     width: 50vw;
+    height: 13.3vw;
     object-fit: contain;
+}
+
+.logo_mobile {
+  padding: 20px;
+  width: 100vw;
+  object-fit: contain;
 }

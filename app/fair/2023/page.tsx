@@ -8,6 +8,7 @@ import { PricetagButton } from "@/components/button/button";
 import { redirect, useRouter } from "next/navigation";
 import { useWindowSize } from "@/app/utils/hooks";
 import { MOBILE_WIDTH } from "@/app/utils/constants";
+import Image from "next/image";
 
 export default function Page() {
   const [pattern, setPattern] = useState<number>(getRandomInteger(3));
@@ -26,7 +27,7 @@ export default function Page() {
       case "Home":
         return (
           <Suspense fallback={<></>}>
-            <Home pattern={pattern} setCurrentPage={setCurrentPage} />
+            <Home pattern={pattern} setCurrentPage={setCurrentPage} isMobile={isMobile}/>
           </Suspense>
         );
 
@@ -46,17 +47,25 @@ export default function Page() {
 function SplashImages({ onClick }: { onClick: () => void }) {
   return (
     <div onClick={onClick} className={style.splash_image_box}>
-      <img
+      <Image
         src="/artwork/윤지훈/윤지훈_Happy Dog Lamp.jpg"
         className={style.splash_image_1}
+        alt={"Loading..."}
+        fill={true}
+        priority
       />
-      <img
+      <Image
         src="/artwork/윤지훈/윤지훈_Homebody Lamp.png"
         className={style.splash_image_2}
+        alt={"Loading..."}
+        fill={true}
       />
-      <img
+      <Image
         src="/artwork/윤지훈/윤지훈_Mulberry.jpg"
         className={style.splash_image_3}
+        alt={"Loading..."}
+        fill={true}
+        priority
       />
     </div>
   );
@@ -65,14 +74,23 @@ function SplashImages({ onClick }: { onClick: () => void }) {
 function Home({
   pattern,
   setCurrentPage,
+  isMobile
 }: {
   pattern: number;
   setCurrentPage: (page: string) => void;
+  isMobile: boolean
 }) {
   const router = useRouter();
   return (
     <div className={style.home_box}>
-      <img src="/logo/logotype_web_long.svg" className={style.logo} />
+      <Image
+        src= {isMobile ? "/logo/logotype_mobile_long.svg" : "/logo/logotype_web_long.svg"}
+        alt="logo"
+        className={isMobile ? style.logo_mobile : style.logo}
+        width={isMobile ? 360 : 960}
+        height={255}
+        priority
+      />
       <PricetagButton
         text={"Fair Info"}
         onClick={() => setCurrentPage("Fair Info")}
@@ -101,13 +119,13 @@ const FAIR_INFO_PRICETAG_STYLES: CSSProperties[] = [
   {
     transform: "rotate(-60deg)",
     left: "20vw",
-    top: "30vh",
+    top: "32vh",
     position: "absolute",
   },
   {
     transform: "rotate(9deg)",
     right: "20vw",
-    top: "20vh",
+    top: "25vh",
     position: "absolute",
   },
   {
