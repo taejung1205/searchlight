@@ -6,8 +6,6 @@ import { useSearchParams } from "next/navigation";
 import style from "./page.module.css";
 import { useEffect, useState } from "react";
 import { Space } from "@/components/space/space";
-import { NonButtonTag } from "@/components/tag/tag";
-import { ButtonImportant } from "@/components/button/button";
 import { useScrollY, useWindowSize } from "../../utils/hooks";
 import Link from "next/link";
 import { MOBILE_WIDTH } from "../../utils/constants";
