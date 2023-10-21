@@ -104,7 +104,8 @@
   color: #0f1012;
 }
 
-.pricetag_default {
+.pricetag_default,
+.pricetag_clicked {
   position: relative;
   width: 86px;
   height: 42px;
@@ -112,5 +113,12 @@
   align-items: center;
   text-align: center;
   display: flex;
+}
+
+.pricetag_default {
   cursor: pointer;
+}
+
+.pricetag_clicked {
+  opacity: 0.5;
 }

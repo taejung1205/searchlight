@@ -69,3 +69,17 @@ export function PricetagButton({
     </div>
   );
 }
+
+export function PricetagClicked({ style }: { style: CSSProperties }) {
+  return (
+    <div className={styles.pricetag_clicked} style={style}>
+      <Image
+        src="/icon/pricetag_clicked.png"
+        alt="loading..."
+        style={{ position: "absolute", top: 0, left: 0 }}
+        priority
+        fill={true}
+      />
+    </div>
+  );
+}
