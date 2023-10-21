@@ -84,7 +84,7 @@
 }
 
 .home_box {
-  width: 100vw;
+  width: 100%;
   height: calc(100vh - 65px);
   position: relative;
   justify-content: center;
@@ -102,7 +102,7 @@
 
 .page_body_box_mobile {
   padding: 14px;
-  width: 100vw;
+  width: 100%;
 }
 
 .page_topic_title {

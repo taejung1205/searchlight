@@ -28,7 +28,7 @@ export function GoToStoreButton({ isMobile = false }: { isMobile?: boolean }) {
   );
 }
 
-export function ButtonImportant({
+export function ButtonDefault({
   text,
   onClick,
 }: {
@@ -36,8 +36,10 @@ export function ButtonImportant({
   onClick: () => void;
 }) {
   return (
-    <div className={styles.button_important} onClick={onClick}>
-      {text}
+    <div className={styles.button_default} onClick={onClick}>
+      <div className="B" style={{ color: "inherit" }}>
+        {text}
+      </div>
     </div>
   );
 }
@@ -77,7 +79,7 @@ export function PricetagClicked({ style }: { style: CSSProperties }) {
         src="/icon/pricetag_clicked.png"
         alt="loading..."
         style={{ position: "absolute", top: 0, left: 0 }}
-        priority
+        priority={true}
         fill={true}
       />
     </div>

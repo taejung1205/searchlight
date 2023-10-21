@@ -4,15 +4,16 @@
 .header_box_fixed_mobile {
   display: flex;
   width: 100%;
-  padding: 15px 30px;
+  padding: 10px 30px;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #bfbfbf;
   z-index: 1;
 }
 
 .header_box_mobile,
 .header_box_fixed_mobile {
-  padding: 15px 30px;
+  padding: 10px 15px;
 }
 
 .header_box_fixed,
@@ -29,12 +30,12 @@
 }
 
 .fixed_filler {
-  height: 60px;
+  height: 40px;
   width: 100%;
 }
 
 .logo {
-  height: 30px;
+  height: 18px;
 }
 
 .menu_box,
@@ -79,6 +80,8 @@
   top: 20px;
   right: 20px;
   cursor: pointer;
+  width: 18px;
+  height: 18px;
 }
 
 .line_narrow {

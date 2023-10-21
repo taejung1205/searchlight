@@ -1,14 +1,19 @@
 "use client";
 
-import { Header } from "@/components/header/header";
+import { Header, HomeHeader } from "@/components/header/header";
 import styles from "./page.module.css";
 import { CSSProperties, Suspense, useState } from "react";
 import { getRandomInteger } from "@/app/utils/functions";
-import { PricetagButton, PricetagClicked } from "@/components/button/button";
+import {
+  ButtonDefault,
+  PricetagButton,
+  PricetagClicked,
+} from "@/components/button/button";
 import { redirect, useRouter } from "next/navigation";
 import { useWindowSize } from "@/app/utils/hooks";
 import { MOBILE_WIDTH } from "@/app/utils/constants";
 import Image from "next/image";
+import { Space } from "@/components/space/space";
 
 export default function Page() {
   const [pattern, setPattern] = useState<number>(getRandomInteger(3));
@@ -21,7 +26,7 @@ export default function Page() {
       case "Splash":
         return (
           <Suspense fallback={<></>}>
-            <SplashImages onClick={() => setCurrentPage("Home")} />
+            <Splash onClick={() => setCurrentPage("Home")} />
           </Suspense>
         );
       case "Home":
@@ -37,11 +42,28 @@ export default function Page() {
       case "About":
         return (
           <Suspense fallback={<></>}>
-            <About
-              pattern={pattern}
-              setCurrentPage={setCurrentPage}
-              isMobile={isMobile}
-            />
+            <About pattern={pattern} isMobile={isMobile} />
+          </Suspense>
+        );
+
+      case "Fair Info":
+        return (
+          <Suspense fallback={<></>}>
+            <FairInfo pattern={pattern} isMobile={isMobile} />
+          </Suspense>
+        );
+
+      case "Guide":
+        return (
+          <Suspense fallback={<></>}>
+            <Guide pattern={pattern} isMobile={isMobile} />
+          </Suspense>
+        );
+
+      case "Artists":
+        return (
+          <Suspense fallback={<></>}>
+            <Artists pattern={pattern} isMobile={isMobile} />
           </Suspense>
         );
 
@@ -52,13 +74,22 @@ export default function Page() {
 
   return (
     <div>
-      <Header currentPage={"/fair/2023"} isMobile={isMobile} />
+      {currentPage == "Splash" || currentPage == "Home" ? (
+        <Header currentPage={"/fair/2023"} isMobile={isMobile} />
+      ) : (
+        <HomeHeader
+          currentPage={currentPage}
+          isMobile={isMobile}
+          onCloseButtonClick={() => setCurrentPage("Home")}
+        />
+      )}
+
       {selectPage(currentPage)}
     </div>
   );
 }
 
-function SplashImages({ onClick }: { onClick: () => void }) {
+function Splash({ onClick }: { onClick: () => void }) {
   return (
     <div onClick={onClick} className={styles.splash_image_box}>
       <Image
@@ -133,15 +164,7 @@ function Home({
   );
 }
 
-function About({
-  pattern,
-  setCurrentPage,
-  isMobile,
-}: {
-  pattern: number;
-  setCurrentPage: (page: string) => void;
-  isMobile: boolean;
-}) {
+function About({ pattern, isMobile }: { pattern: number; isMobile: boolean }) {
   const router = useRouter();
   return (
     <div className={styles.home_box}>
@@ -187,6 +210,181 @@ function About({
             기대한다.
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function FairInfo({
+  pattern,
+  isMobile,
+}: {
+  pattern: number;
+  isMobile: boolean;
+}) {
+  const router = useRouter();
+  return (
+    <div className={styles.home_box}>
+      <PricetagClicked style={FAIR_INFO_PRICETAG_STYLES[pattern]} />
+      <div
+        className={
+          isMobile ? styles.page_body_box_mobile : styles.page_body_box
+        }
+      >
+        <div className={styles.page_topic_title}>
+          <div className={"A1"}>SEARCHLIGHT FAIR 2023</div>
+        </div>
+        <div className={isMobile ? styles.page_body_mobile : styles.page_body}>
+          <div className={"D2"} style={{ textAlign: "justify" }}>
+            <div
+              style={{
+                // maxWidth: "calc(100vw - 30px)",
+                width: "372px",
+                height: "550px",
+                backgroundColor: "grey",
+              }}
+            />
+            <Space h={14} />
+            <div className="D2">
+              일시: 2023.11.17.(금)~11.19.(일), 10:00-20:00
+              <br />
+              장소: 서울시 성동구 연무장17길 4 LES601
+            </div>
+            <Space h={25} />
+            <ButtonDefault
+              text={"티켓 구입 링크"}
+              onClick={() => {
+                console.log("hello");
+              }}
+            />
+            <Space h={50} />
+            <div className="A1" style={{ color: "#717171" }}>
+              Credit.
+            </div>
+            <Space h={14} />
+            <div className="D2" style={{ color: "#717171" }}>
+              주최 및 주관: 로파서울
+              <br />
+              후원: 예술경영지원센터
+              <br />
+              협력: T.T.T.C 스튜디오
+              <br />
+              그래픽디자인: 이응셋
+              <br />웹 디자인: 오가현
+              <br />웹 개발: 김태정
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Guide({ pattern, isMobile }: { pattern: number; isMobile: boolean }) {
+  const router = useRouter();
+  return (
+    <div className={styles.home_box}>
+      <PricetagClicked style={ABOUT_PRICETAG_STYLES[pattern]} />
+      <div
+        className={
+          isMobile ? styles.page_body_box_mobile : styles.page_body_box
+        }
+      >
+        <div className={styles.page_topic_title}>
+          <div className={"A1"}>관람 방법</div>
+        </div>
+        <div className={isMobile ? styles.page_body_mobile : styles.page_body}>
+          <div className={"D2"} style={{ textAlign: "justify" }}>
+            작품의 가격을 형성하는 요인, 그리고 작품을 구매하는 맥락에는 수많은
+            사회적인 서사가 얽혀 있습니다. 하지만 대부분의 아트컬렉터들의 첫번째
+            구매 작품은 ‘자신이 이 작업이 얼마나 마음에 들었는가’ 라는 아주
+            지극히 개인적인 소비 의견이 더해집니다. ‘색감이 좋아서’, ‘우리 집에
+            잘 어울릴 것 같아서’와 같은 작품을 구매하는 서사는, 우리가 소비품을
+            구매하는 서사와 크게 다르지 않습니다. 서치라이트 페어에서 관람객은
+            이 부분을 환기시켜줄만한 세 가지의 질문을 제공받음으로써 작품을
+            관람하는 동안 ‘나는 어떤 작품을 구매할 것인가’에 대한 고민을
+            경험합니다.
+          </div>
+          <Space h={28} />
+          <div>
+            <div style={{ display: "flex" }}>
+              <div className="D2" style={{ width: 10 }}>
+                1
+              </div>
+              <Space w={15} />
+              <div
+                className="D2"
+                style={{ textAlign: "justify", width: "100%" }}
+              >
+                관람객은 입장 시 본격적인 관람에 앞서 페어에 관한 간략한 설명과
+                함께 리셉션에 소지품을 맡긴 후 세 가지 질문이 담긴 박스 전개도와
+                펜을 받게 됩니다. 
+              </div>
+            </div>
+            <div style={{ display: "flex" }}>
+              <div className="D2" style={{ width: 10 }}>
+                2
+              </div>
+              <Space w={15} />
+              <div
+                className="D2"
+                style={{ textAlign: "justify", width: "100%" }}
+              >
+                총 200여 점의 작품을 살펴보며, 질문에 상응하는 세 가지 작품을
+                신중히 고른 후, 작품 번호를 기재합니다
+              </div>
+            </div>
+            <div style={{ display: "flex" }}>
+              <div className="D2" style={{ width: 10 }}>
+                3
+              </div>
+              <Space w={15} />
+              <div
+                className="D2"
+                style={{ textAlign: "justify", width: "100%" }}
+              >
+                관람 종료 후 작성한 카드를 리셉션에 제출합니다. 스태프는 선택한
+                작품의 번호를 확인하고 그에 맞는 작가 한줄평 프라이스 택으로
+                교환해드립니다. 
+              </div>
+            </div>
+          </div>
+          <Space h={28} />
+          <div
+            style={{
+              backgroundColor: "grey",
+              width: "100%",
+              height: "240px",
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Artists({
+  pattern,
+  isMobile,
+}: {
+  pattern: number;
+  isMobile: boolean;
+}) {
+  const router = useRouter();
+  return (
+    <div className={styles.home_box}>
+      <PricetagClicked style={ABOUT_PRICETAG_STYLES[pattern]} />
+      <div
+        className={
+          isMobile ? styles.page_body_box_mobile : styles.page_body_box
+        }
+      >
+        <div className={styles.page_topic_title}>
+          <div className={"A1"}>37 Artists, ?? Artworks.</div>
+        </div>
+        <div
+          className={isMobile ? styles.page_body_mobile : styles.page_body}
+        ></div>
       </div>
     </div>
   );
