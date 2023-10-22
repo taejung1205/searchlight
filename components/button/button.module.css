@@ -79,10 +79,9 @@
   background: var(--white, #fff);
 }
 
-.button_important {
+.button_default {
   display: inline-flex;
-  height: 48px;
-  padding: 11.5px 23px;
+  padding: 3.5px 21px;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -90,16 +89,29 @@
   border: 1px solid #0f1012;
   background: #0f1012;
   cursor: pointer;
-  font-family: SUIT;
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 28px; /* 164.706% */
-  letter-spacing: -0.085px;
   color: #fff;
 }
 
-.button_important:hover {
+.button_default:hover {
   background: #fff;
   color: #0f1012;
+}
+
+.pricetag_default,
+.pricetag_clicked {
+  position: relative;
+  width: 86px;
+  height: 42px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+}
+
+.pricetag_default {
+  cursor: pointer;
+}
+
+.pricetag_clicked {
+  opacity: 0.5;
 }

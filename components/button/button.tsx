@@ -1,4 +1,6 @@
+import { CSSProperties } from "react";
 import styles from "./button.module.css";
+import Image from "next/image";
 
 export function Countbutton({
   count,
@@ -26,7 +28,7 @@ export function GoToStoreButton({ isMobile = false }: { isMobile?: boolean }) {
   );
 }
 
-export function ButtonImportant({
+export function ButtonDefault({
   text,
   onClick,
 }: {
@@ -34,8 +36,52 @@ export function ButtonImportant({
   onClick: () => void;
 }) {
   return (
-    <div className={styles.button_important} onClick={onClick}>
-      {text}
+    <div className={styles.button_default} onClick={onClick}>
+      <div className="B" style={{ color: "inherit" }}>
+        {text}
+      </div>
+    </div>
+  );
+}
+
+export function PricetagButton({
+  text,
+  onClick,
+  style,
+}: {
+  text: string;
+  onClick: () => void;
+  style: CSSProperties;
+}) {
+  return (
+    <div className={styles.pricetag_default} onClick={onClick} style={style}>
+      <Image
+        src="/icon/pricetag_default.png"
+        alt="loading..."
+        style={{ position: "absolute", top: 0, left: 0 }}
+        priority
+        fill={true}
+      />
+      <div
+        className="B"
+        style={{ color: "#fff", zIndex: 1, position: "absolute" }}
+      >
+        {text}
+      </div>
+    </div>
+  );
+}
+
+export function PricetagClicked({ style }: { style: CSSProperties }) {
+  return (
+    <div className={styles.pricetag_clicked} style={style}>
+      <Image
+        src="/icon/pricetag_clicked.png"
+        alt="loading..."
+        style={{ position: "absolute", top: 0, left: 0 }}
+        priority={true}
+        fill={true}
+      />
     </div>
   );
 }

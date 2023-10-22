@@ -7,7 +7,7 @@ import style from "./page.module.css";
 import { useState } from "react";
 import { Space } from "@/components/space/space";
 import { NonButtonTag } from "@/components/tag/tag";
-import { ButtonImportant } from "@/components/button/button";
+import { ButtonDefault } from "@/components/button/button";
 import { useScrollY, useWindowSize } from "../utils/hooks";
 import Link from "next/link";
 import { MOBILE_WIDTH } from "../utils/constants";
@@ -232,7 +232,7 @@ function ContactBox({
         </a>
       </div>
       <Space h={30} />
-      <ButtonImportant
+      <ButtonDefault
         text="작가 공유하기"
         onClick={
           /** TODO */ () => {

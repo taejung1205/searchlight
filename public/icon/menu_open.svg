@@ -1,6 +1,12 @@
-<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="13" y="15.5" width="3" height="13" rx="1.5" transform="rotate(90 13 15.5)" fill="#0F1012"/>
-<rect x="34" y="15.5" width="3" height="13" rx="1.5" transform="rotate(90 34 15.5)" fill="#0F1012"/>
-<rect x="15.5" y="21" width="3" height="13" rx="1.5" fill="#0F1012"/>
-<rect x="15.5" width="3" height="13" rx="1.5" fill="#0F1012"/>
+<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 51">
+<g id="Group 40">
+<rect id="Rectangle 4" x="6.52014" y="8.52631" width="0.999804" height="6.52015" rx="0.499902" transform="rotate(90 6.52014 8.52631)" fill="#0F1012"/>
+<rect id="Rectangle 29" x="18" y="8.52631" width="0.999804" height="6.52015" rx="0.499902" transform="rotate(90 18 8.52631)" fill="#0F1012"/>
+</g>
+<g id="Group 41">
+<rect id="Rectangle 4_2" x="8.52649" y="11.4799" width="0.999975" height="6.52015" rx="0.499987" fill="#0F1012"/>
+<rect id="Rectangle 29_2" x="8.52649" width="0.999975" height="6.52015" rx="0.499987" fill="#0F1012"/>
+</g>
+</g>
 </svg>
