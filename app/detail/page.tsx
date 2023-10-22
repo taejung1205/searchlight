@@ -54,19 +54,17 @@ export default function Page() {
         />
         <Space h={30} />
         <IntroductionBox
-          abstract={artistData.abstract}
+          abstract={artistData.abstract_short}
           intro={artistData.intro}
           screenWidth={windowSize.width}
         />
         <Space h={30} />
         <ArtworksBox
-          imageCaptionList={artistData.imageCaption}
+          imageCaptionList={artistData.artworks}
           isMobile={isMobile}
         />
         <Space h={30} />
         <ContactBox artistData={artistData} isMobile={isMobile} />
-        <Space h={30} />
-        <TagBox tagList={artistData.tag} isMobile={isMobile} />
         <Space h={120} />
       </div>
       <Footer />
@@ -244,27 +242,3 @@ function ContactBox({
   );
 }
 
-function TagBox({
-  tagList,
-  isMobile,
-}: {
-  tagList: string[];
-  isMobile: boolean;
-}) {
-  return (
-    <div
-      className={isMobile ? style.items_box_mobile : style.items_box}
-      style={{ textAlign: "center" }}
-    >
-      <div className={style.line} />
-      <Space h={15} />
-      <p className="FOOTER">tags</p>
-      <Space h={30} />
-      <div style={{ display: "inline-block" }}>
-        {tagList.map((item, index) => {
-          return <NonButtonTag tag={item} />;
-        })}
-      </div>
-    </div>
-  );
-}
