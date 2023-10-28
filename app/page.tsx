@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./page.module.css";
 import { Countbutton, GoToStoreButton } from "@/components/button/button";
 import { useScrollY, useWindowSize } from "./utils/hooks";
-import { Footer } from "@/components/footer/footer";
+import { Footer } from "@/components/footer/footer_obsolete";
 import Link from "next/link";
 import { MOBILE_WIDTH } from "./utils/constants";
 import { Space } from "@/components/space/space";

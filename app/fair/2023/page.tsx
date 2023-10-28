@@ -14,6 +14,7 @@ import { useWindowSize } from "@/app/utils/hooks";
 import { MOBILE_WIDTH } from "@/app/utils/constants";
 import Image from "next/image";
 import { Space } from "@/components/space/space";
+import { Footer } from "@/components/footer/footer";
 
 export default function Page() {
   const [pattern, setPattern] = useState<number>(getRandomInteger(3));
@@ -85,6 +86,7 @@ export default function Page() {
       )}
 
       {selectPage(currentPage)}
+      <Footer isMobile={isMobile} />
     </div>
   );
 }
