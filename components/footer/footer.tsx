@@ -1,87 +1,89 @@
-"use client"
+"use client";
 import Link from "next/link";
 import styles from "./footer.module.css";
 import { useWindowSize } from "@/app/utils/hooks";
 import { MOBILE_WIDTH } from "@/app/utils/constants";
+import { useState } from "react";
+import { Space } from "../space/space";
 
-export function Footer() {
+export function Footer({ isMobile = false }: { isMobile?: boolean }) {
   const windowSize = useWindowSize();
+  const [isOpened, setIsOpened] = useState<boolean>(false);
 
-  if (windowSize.width > MOBILE_WIDTH) {
+  if (isMobile) {
     return (
-      <div className={styles.footer_box}>
-        <Link href="/store">
-          <div className={styles.marquee_box}>
-            <div className={styles.marquee_1}>
-              <p>TURN ON SEARCHLIGHT🔦</p>
-              <p>TURN ON SEARCHLIGHT🔦</p>
-              <p>TURN ON SEARCHLIGHT🔦</p>
-            </div>
-            <div className={styles.marquee_2}>
-              <p>TURN ON SEARCHLIGHT🔦</p>
-              <p>TURN ON SEARCHLIGHT🔦</p>
-              <p>TURN ON SEARCHLIGHT🔦</p>
-            </div>
-          </div>
-        </Link>
-        <div className={styles.info_box}>
+      <div
+        className={styles.footer_box_mobile}
+        onClick={() => setIsOpened((v) => !v)}
+      >
+        {isOpened ? (
           <div>
-            <p className="FOOTER">
-              SEARCHLIGHT 2023 THE ARTIST FAIR
-              <br />
-              서치라이트 2023 아티스트 페어
-              <br />
-              <br />
-              2023.11.00.-11.00. (총 3일간) 00:00~00:00
-              <br />
-              LES601 성수(서울특별시 성동구 성수동2가 275-21)
-            </p>
+            <div className="F">SEARCHLIGHT THE ARTIST FAIR <br /> © LOFA SEOUL</div>
+            <Space h={16} />
+            <FooterLinks />
           </div>
-          <div>
-            <p className="FOOTER">
-              contact to:
-              <br />
-              instagram
-              <br />
-              copyright
-            </p>
-          </div>
-        </div>
+        ) : (
+          <div className="F">SEARCHLIGHT THE ARTIST FAIR</div>
+        )}
       </div>
     );
   } else {
     return (
-      <div className={styles.footer_box}>
-        <Link href="/store">
-          <div className={styles.marquee_box_mobile}>
-            <div className={styles.marquee_1}>
-              <p>TURN ON SEARCHLIGHT🔦</p>
-            </div>
-            <div className={styles.marquee_2}>
-              <p>TURN ON SEARCHLIGHT🔦</p>
-            </div>
+      <div
+        className={styles.footer_box}
+        onMouseEnter={() => setIsOpened(true)}
+        onMouseLeave={() => setIsOpened(false)}
+      >
+        {isOpened ? (
+          <div>
+            <div className="F">SEARCHLIGHT THE ARTIST FAIR</div>
+            <FooterLinks />
           </div>
-        </Link>
-        <div className={styles.info_box_mobile}>
-          <p className="FOOTER">
-            SEARCHLIGHT 2023 THE ARTIST FAIR
-            <br />
-            서치라이트 2023 아티스트 페어
-            <br />
-            <br />
-            2023.11.00.-11.00. (총 3일간) 00:00~00:00
-            <br />
-            LES601 성수(서울특별시 성동구 성수동2가 275-21)
-            <br />
-            <br />
-            contact to:
-            <br />
-            instagram
-            <br />
-            copyright
-          </p>
-        </div>
+        ) : (
+          <div className="F">SEARCHLIGHT THE ARTIST FAIR</div>
+        )}
+        <div className="F">© LOFA SEOUL</div>
       </div>
     );
   }
+}
+
+function FooterLinks() {
+  return (
+    <div style={{ display: "flex" }}>
+      <a
+        href="https://www.instagram.com/lofa_seoul/"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        <div className="F" style={{ textDecoration: "underline" }}>
+          FAIR INSTAGRAM
+        </div>
+      </a>
+      <div className="F" style={{ paddingLeft: 5, paddingRight: 5 }}>
+        |
+      </div>
+      <a
+        href="https://www.instagram.com/lofa_seoul/"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        <div className="F" style={{ textDecoration: "underline" }}>
+          LOFA HOME
+        </div>
+      </a>
+      <div className="F" style={{ paddingLeft: 5, paddingRight: 5 }}>
+        |
+      </div>
+      <a
+        href="https://www.instagram.com/lofa_seoul/"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        <div className="F" style={{ textDecoration: "underline" }}>
+          LOFA INSTAGRAM
+        </div>
+      </a>
+    </div>
+  );
 }

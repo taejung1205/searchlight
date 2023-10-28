@@ -9,7 +9,6 @@ import { Space } from "@/components/space/space";
 import { NonButtonTag } from "@/components/tag/tag";
 import { ButtonDefault } from "@/components/button/button";
 import { useScrollY, useWindowSize } from "../utils/hooks";
-import Link from "next/link";
 import { MOBILE_WIDTH } from "../utils/constants";
 
 export default function Page() {
@@ -26,7 +25,7 @@ export default function Page() {
         <div className={style.error_page}>
           <p className="H1">잘못된 접근입니다.</p>
         </div>
-        <Footer />
+        <Footer isMobile={isMobile}/>
       </main>
     );
   }
@@ -67,7 +66,7 @@ export default function Page() {
         <ContactBox artistData={artistData} isMobile={isMobile} />
         <Space h={120} />
       </div>
-      <Footer />
+      <Footer isMobile={isMobile}/>
     </div>
   );
 }

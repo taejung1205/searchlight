@@ -48,7 +48,7 @@ export default function Page() {
         />
         <Space h={120} />
       </div>
-      <Footer />
+      <Footer isMobile={isMobile} />
     </div>
   );
 }
