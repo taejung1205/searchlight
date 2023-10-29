@@ -13,18 +13,19 @@
       "시들지 않는 꽃 139, 2022, 도자기,흙, 11x10x19(h)cm"
     ],
     "email": "igangryu@gmail.com",
-    "website": "X",
+    "website": "",
     "instagram": "https://www.instagram.com/gangryu_/",
     "imageFileName": [
-      "강류_돌산하니 도마뱀.jpg",
-      "강류_시들지 않는 꽃 077.JPG",
-      "강류_시들지 않는 꽃 171.jpg",
-      "강류2_시들지 않는 꽃 116.JPG",
-      "강류2_시들지 않는 꽃 219.jpg",
-      "강류2_시들지 않는 꽃 219.JPG",
-      "강류3_돌테이블03.jpg",
-      "강류3_미니 고인돌.JPG",
-      "강류3_시들지 않는 꽃 139.jpg"
+      "0.webp",
+      "1.webp",
+      "2.webp",
+      "3.webp",
+      "4.webp",
+      "5.webp",
+      "6.webp",
+      "7.webp",
+      "8.webp",
+      "9.webp"
     ]
   },
   {
@@ -35,9 +36,9 @@
     "explanation": "서울을 기반으로 활동하고 있는 강영민 작가는 현대미술가이자 산업디자이너이다. 2016년부터 본격 개인 작가로 활동하던 강영민작가는 2020년 새롭게 선보인 AFF Platubo collection 으로 작은 관점의 차이로 산업 폐기물 플라스틱으로 작품을 제작하여, 이 시대에 필요한 새로운 아름다움을 재정의 했다. 이후 제이든 스미스, 알렉산더 왕을 비롯한 국 내외 패션과 예술계통 해외 셀럽들의 주목을 받으며 다양한 세계적인 활동들을 이어오고있다. 현재는 현대미술 조형 작품에서부터 가구 및 의자, 신발, 패션 등 다양한 분야에 디자인 아트 디렉션을 맡아 뮤지엄, 갤러리 뿐 만 아니라 다양한 브랜드들과 협업해 나가고있다. \n'문화와 사고방식은 사람이 어떤 환경에 놓여져 있느냐에 따라 다르다. 다양한 환경에서 사람들은 생존에 필요한 고정관념들을 갖게 되고 그와는 반대로 창의적 사고와 시야는 점점 좁아져간다.나는 이러한 고정관념에 의해 우리들의 문화와 생각에서 밀려난것들에 주목하고있다. 무관심에서 관심으로, 비주류에서 주류로, 아름답지 않던것에서 아름다운것으로 세상에 선보이며,현대 사람들에게 시야의 확장과 이 시대에 새로운 미의 해석을 제공하기를 원한다.'",
     "artworks": ["Please take off your xxxpods, 2023, 실리콘, 30.5x21x8.3(cm)"],
     "email": "Youngmiin.k@gmail.com",
-    "website": "X",
+    "website": "",
     "instagram": "https://www.instagram.com/ymk.contemporary/",
-    "imageFileName": ["강영민high res_ears main.jpg"]
+    "imageFileName": ["high res_ears main.webp"]
   },
   {
     "index": 2,
@@ -54,10 +55,16 @@
     "website": "https://kosae.co.kr/",
     "instagram": "https://www.instagram.com/_ko_sae_glass/",
     "imageFileName": [
-      "고새_Ko Sae_s Drop  목걸이.JPG",
-      "고새_식물 유리펜 세트.jpg",
-      "고새군체 유리펜 세트.jpg",
-      "고새은하 유리펜.jpg"
+      "0.webp",
+      "1.webp",
+      "2.webp",
+      "3.webp",
+      "4.webp",
+      "5.webp",
+      "6.webp",
+      "7.webp",
+      "8.webp",
+      "9.webp"
     ]
   },
   {
@@ -81,18 +88,18 @@
     ],
     "email": "coseungyeon@gmail.com",
     "website": "https://cosngyeon.com/",
-    "instagram": "x",
+    "instagram": "",
     "imageFileName": [
-      "고승연_2_ 사랑병 15_26x7x26(h)cm.2023.jpg",
-      "고승연_3_ 사랑병 18_34x7x21(h)cm.2022.jpg",
-      "고승연_4_ 사랑병 12_19x4x24(h)cm.2023.뒤.jpg",
-      "고승연_4_ 사랑병 12_19x4x24(h)cm.2023.뒤.jpg",
-      "고승연_5_소원25x10x25(h)cm.2022.앞.jpg",
-      "고승연_8_26x5x29(h)cm.2023.앞.jpg",
-      "고승연_10_사랑병.png",
-      "고승연_IMG_2500 복사.png",
-      "고승연_사랑병_.jpg",
-      "고승연_홀스플레이트.jpg"
+      "0.webp",
+      "1.webp",
+      "2.webp",
+      "3.webp",
+      "4.webp",
+      "5.webp",
+      "6.webp",
+      "7.webp",
+      "8.webp",
+      "9.webp"
     ]
   },
   {
@@ -141,7 +148,11 @@
     "email": "lowatapestry@gmail.com",
     "website": "X",
     "instagram": "https://www.instagram.com/lowakim_/",
-    "imageFileName": ["김로와_녹1.jpg", "김로와_녹2.jpg", "김로와_녹3.jpg"]
+    "imageFileName": [
+      "김로와_녹1.jpg",
+      "김로와_녹2.jpg",
+      "김로와_녹3.jpg"
+    ]
   },
   {
     "index": 7,
@@ -170,7 +181,11 @@
     "email": "kimjisuemail@gmail.com",
     "website": "drawingbyisu.cargo.site",
     "instagram": "https://www.instagram.com/isu_kim_/",
-    "imageFileName": ["Isu Kim.jpg", "Isu Kim2.jpg", "IsuKim3.jpg"]
+    "imageFileName": [
+      "2023_Drawing_01.webp",
+      "2023_Drawing_02.webp",
+      "2023_Drawing_03.webp"
+    ]
   },
   {
     "index": 9,
