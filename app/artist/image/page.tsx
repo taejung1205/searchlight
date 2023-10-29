@@ -66,26 +66,26 @@ function Subheader({
     <div
       className={isMobile ? style.subheader_box_mobile : style.subheader_box}
     >
-      <Link href="/artist/tag">
-        <p className="P1">ARTIST / 이미지로 보기</p>
-      </Link>
+      <div className="D2">35 ARTISTS</div>
 
-      <div
-        style={{ display: "flex", cursor: "pointer", alignItems: "center" }}
-        onClick={() => setIsBig(!isBig)}
-      >
+      <div style={{ display: "flex", alignItems: "center" }}>
         <img
-          src={isBig ? "/icon/smaller.svg" : "/icon/bigger.svg"}
-          style={{ height: "30px", width: "30px" }}
+          src={
+            isBig ? "/icon/bigger_selected.svg" : "/icon/bigger_unselected.svg"
+          }
+          style={{ height: "18px", width: "18px", cursor: "pointer" }}
+          onClick={() => setIsBig(true)}
         />
-        {isMobile ? (
-          <></>
-        ) : (
-          <div style={{ display: "flex" }}>
-            <Space w={10} />
-            <p className="P1">{isBig ? "작게 보기" : "크게 보기"}</p>
-          </div>
-        )}
+        <Space w={15} />
+        <img
+          src={
+            isBig
+              ? "/icon/smaller_unselected.svg"
+              : "/icon/smaller_selected.svg"
+          }
+          style={{ height: "18px", width: "18px", cursor: "pointer" }}
+          onClick={() => setIsBig(false)}
+        />
       </div>
     </div>
   );
@@ -118,8 +118,10 @@ function ImageGrid({
               style={{
                 width: (screenWidth - 40) / divider,
                 height: (screenWidth - 40) / divider,
+                backgroundColor: "#D2D1D1"
               }}
               className={style.artwork_image}
+              rel="preload"
             />
           </Link>
         );

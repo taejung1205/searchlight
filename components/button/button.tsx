@@ -55,12 +55,10 @@ export function PricetagButton({
 }) {
   return (
     <div className={styles.pricetag_default} onClick={onClick} style={style}>
-      <Image
+      <img
         src="/icon/pricetag_default.png"
         alt="loading..."
         style={{ position: "absolute", top: 0, left: 0 }}
-        priority
-        fill={true}
         rel="preload"
       />
       <div
