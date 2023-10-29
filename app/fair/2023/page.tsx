@@ -15,19 +15,29 @@ import { MOBILE_WIDTH } from "@/app/utils/constants";
 import Image from "next/image";
 import { Space } from "@/components/space/space";
 import { Footer } from "@/components/footer/footer";
+import Link from "next/link";
 
 export default function Page() {
   const [pattern, setPattern] = useState<number>(getRandomInteger(3));
   const [currentPage, setCurrentPage] = useState<string>("Splash");
+  const [positionArray, setPositionArray] = useState<number[]>([]);
   const windowSize = useWindowSize();
   const isMobile = windowSize.width < MOBILE_WIDTH;
+  const datas: any[] = require("/public/data/artist.json");
+  let positonArray: any[];
 
   useEffect(() => {
     const element = window.document.getElementById(`splash`);
     element?.addEventListener("animationend", () => {
-      setCurrentPage("Home");
-    })
+      if (currentPage == "Splash") {
+        setCurrentPage("Home");
+      }
+    });
   }, []);
+
+  useEffect(() => {
+    setPositionArray(getRandomPositionArray(datas.length, windowSize.width));
+  }, [currentPage]);
 
   function selectPage(currentPage: string) {
     switch (currentPage) {
@@ -74,7 +84,12 @@ export default function Page() {
       case "Artists":
         return (
           <Suspense fallback={<></>}>
-            <Artists pattern={pattern} isMobile={isMobile} />
+            <Artists
+              pattern={pattern}
+              isMobile={isMobile}
+              dataArray={datas}
+              positionArray={positionArray}
+            />
           </Suspense>
         );
 
@@ -96,7 +111,11 @@ export default function Page() {
       )}
 
       {selectPage(currentPage)}
-      <Footer isMobile={isMobile} />
+      {currentPage == "Splash" || currentPage == "Home" ? (
+        <Footer isMobile={isMobile} />
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
@@ -289,13 +308,13 @@ function FairInfo({
         </div>
         <div className={isMobile ? styles.page_body_mobile : styles.page_body}>
           <div className={"D2"} style={{ textAlign: "justify" }}>
-            <div
+            <img
               style={{
-                // maxWidth: "calc(100vw - 30px)",
-                width: "372px",
-                height: "550px",
-                backgroundColor: "grey",
+                width: 390,
+                maxWidth: "calc(100vw - 30px)",
               }}
+              src={"/poster/poster.webp"}
+              alt={""}
             />
             <Space h={14} />
             <div className="D2">
@@ -361,7 +380,21 @@ function Guide({ pattern, isMobile }: { pattern: number; isMobile: boolean }) {
           <Space h={28} />
           <div>
             <div style={{ display: "flex" }}>
-              <div className="D2" style={{ width: 10 }}>
+              <div className="D2" style={{ width: 45 }}>
+                Step.
+              </div>
+              <Space w={15} />
+              <div
+                className="D2"
+                style={{ textAlign: "justify", width: "100%" }}
+              >
+                Guide.
+              </div>
+            </div>
+            <Space h={7} />
+            <div style={{ background: "#000", height: 1, width: "100%" }} />
+            <div style={{ display: "flex" }}>
+              <div className="D2" style={{ width: 45 }}>
                 1
               </div>
               <Space w={15} />
@@ -374,8 +407,10 @@ function Guide({ pattern, isMobile }: { pattern: number; isMobile: boolean }) {
                 펜을 받게 됩니다. 
               </div>
             </div>
+            <Space h={14} />
+            <div style={{ background: "#000", height: 1, width: "100%" }} />
             <div style={{ display: "flex" }}>
-              <div className="D2" style={{ width: 10 }}>
+              <div className="D2" style={{ width: 45 }}>
                 2
               </div>
               <Space w={15} />
@@ -387,8 +422,10 @@ function Guide({ pattern, isMobile }: { pattern: number; isMobile: boolean }) {
                 신중히 고른 후, 작품 번호를 기재합니다
               </div>
             </div>
+            <Space h={14} />
+            <div style={{ background: "#000", height: 1, width: "100%" }} />
             <div style={{ display: "flex" }}>
-              <div className="D2" style={{ width: 10 }}>
+              <div className="D2" style={{ width: 45 }}>
                 3
               </div>
               <Space w={15} />
@@ -403,13 +440,13 @@ function Guide({ pattern, isMobile }: { pattern: number; isMobile: boolean }) {
             </div>
           </div>
           <Space h={28} />
-          <div
+          {/* <div
             style={{
               backgroundColor: "grey",
               width: "100%",
               height: "240px",
             }}
-          />
+          /> */}
         </div>
       </div>
     </div>
@@ -419,11 +456,14 @@ function Guide({ pattern, isMobile }: { pattern: number; isMobile: boolean }) {
 function Artists({
   pattern,
   isMobile,
+  dataArray,
+  positionArray,
 }: {
   pattern: number;
   isMobile: boolean;
+  dataArray: any[];
+  positionArray: any[];
 }) {
-  const router = useRouter();
   return (
     <div className={styles.home_box}>
       <PricetagClicked style={ARTISTS_PRICETAG_STYLES[pattern]} />
@@ -433,14 +473,50 @@ function Artists({
         }
       >
         <div className={styles.page_topic_title}>
-          <div className={"A1"}>37 Artists, ?? Artworks.</div>
+          <div className={"A1"}>35 Artists, 200+ Artworks.</div>
+          <Link href={"/artist/image"}>
+            <div className="A1" style={{textDecoration: "underline"}}>(view all)</div>
+          </Link>
         </div>
-        <div
-          className={isMobile ? styles.page_body_mobile : styles.page_body}
-        ></div>
+        <div className={isMobile ? styles.page_body_mobile : styles.page_body}>
+          {dataArray.map((item) => {
+            return (
+              <div
+                className={styles.artist_box_heap}
+                style={{
+                  marginLeft: `${positionArray[item.index]}px`,
+                }}
+              >
+                <Link href={`/detail?index=${item.index}`}>
+                  <div className="A1">{item.name}</div>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
+}
+
+function getRandomPositionArray(count: number, windowWidth: number) {
+  let boxWidth = 370;
+  if (boxWidth > windowWidth - 30) {
+    boxWidth = windowWidth - 30;
+  }
+  const first = getRandomInteger(190) + 100;
+  const positionArr = [first];
+  for (let i = 0; i < count - 1; i++) {
+    let next = positionArr[i] + getRandomInteger(100) - 50;
+    if (next < 0) {
+      next = 0;
+    }
+    if (next > boxWidth - 160) {
+      next = boxWidth - 160;
+    }
+    positionArr.push(next);
+  }
+  return positionArr;
 }
 
 const FAIR_INFO_PRICETAG_STYLES: CSSProperties[] = [

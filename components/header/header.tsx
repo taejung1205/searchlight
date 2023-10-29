@@ -27,7 +27,10 @@ export function Header({
             : styles.header_box
         }
       >
-        <img src="/logo/short_logotype.svg" className={styles.logo} />
+        <Link href={"/fair/2023"}>
+          <img src="/logo/short_logotype.svg" className={styles.logo} />
+        </Link>
+
         <img
           src="/icon/menu_open.svg"
           style={{ cursor: "pointer", width: 18, height: 18 }}

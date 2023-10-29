@@ -61,6 +61,7 @@ export function PricetagButton({
         style={{ position: "absolute", top: 0, left: 0 }}
         priority
         fill={true}
+        rel="preload"
       />
       <div
         className="B"

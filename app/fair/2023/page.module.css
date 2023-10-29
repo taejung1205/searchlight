@@ -158,3 +158,12 @@
   width: 100vw;
   object-fit: contain;
 }
+
+.artist_box_heap {
+  padding: 6px 15px;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  width: fit-content;
+  cursor: pointer;
+}
