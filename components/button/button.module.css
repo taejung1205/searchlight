@@ -106,12 +106,23 @@
   align-items: center;
   text-align: center;
   display: flex;
+ 
 }
 
 .pricetag_default {
   cursor: pointer;
+  animation: fade_anim 1s ease-out;
 }
 
 .pricetag_clicked {
   opacity: 0.5;
+}
+
+@keyframes fade_anim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
