@@ -8,6 +8,7 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #bfbfbf;
+  background-color: #D2D1D1;
   z-index: 1;
 }
 
@@ -19,7 +20,6 @@
 .header_box_fixed,
 .header_box_fixed_mobile {
   top: 0;
-  background-color: #ececec;
   border-bottom: 1px solid #bfbfbf;
   position: fixed;
   animation: header_anim 0.5s;
