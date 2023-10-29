@@ -23,11 +23,10 @@ export default function Page() {
   const isMobile = windowSize.width < MOBILE_WIDTH;
 
   useEffect(() => {
-    let timer = setTimeout(() => {
+    const element = window.document.getElementById(`splash`);
+    element?.addEventListener("animationend", () => {
       setCurrentPage("Home");
-    }, 5000);
-
-    return () => clearInterval(timer);
+    })
   }, []);
 
   function selectPage(currentPage: string) {
@@ -147,6 +146,7 @@ function Splash({
         />
         <Image
           src="/splash/splash_4.webp"
+          id="splash"
           className={styles.splash_image_4}
           alt={"Loading..."}
           fill={true}
@@ -337,7 +337,7 @@ function Guide({ pattern, isMobile }: { pattern: number; isMobile: boolean }) {
   const router = useRouter();
   return (
     <div className={styles.home_box}>
-      <PricetagClicked style={ABOUT_PRICETAG_STYLES[pattern]} />
+      <PricetagClicked style={GUIDE_PRICETAG_STYLES[pattern]} />
       <div
         className={
           isMobile ? styles.page_body_box_mobile : styles.page_body_box
@@ -426,7 +426,7 @@ function Artists({
   const router = useRouter();
   return (
     <div className={styles.home_box}>
-      <PricetagClicked style={ABOUT_PRICETAG_STYLES[pattern]} />
+      <PricetagClicked style={ARTISTS_PRICETAG_STYLES[pattern]} />
       <div
         className={
           isMobile ? styles.page_body_box_mobile : styles.page_body_box

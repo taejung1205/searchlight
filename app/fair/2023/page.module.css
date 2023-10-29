@@ -18,32 +18,33 @@
 
 .splash_image_1 {
   opacity: 0;
-  animation: fade_1 4s linear;
+  animation: fade_1 5s linear;
 }
 
 .splash_image_2 {
   opacity: 0;
-  animation: fade_2 4s linear;
+  animation: fade_2 5s linear;
 }
 
 .splash_image_3 {
   opacity: 0;
-  animation: fade_3 4s linear;
+  animation: fade_3 5s linear;
 }
 
 .splash_image_4 {
-  opacity: 1;
-  animation: fade_4 4s linear;
+  animation: fade_4 5s linear;
+  filter: grayscale(100%);
+  opacity: 0.5;
 }
 
 @keyframes fade_1 {
   0% {
     opacity: 1;
   }
-  25% {
+  17% {
     opacity: 1;
   }
-  30% {
+  23% {
     opacity: 0;
   }
   100% {
@@ -55,16 +56,16 @@
   0% {
     opacity: 0;
   }
-  20% {
+  17% {
     opacity: 0;
   }
-  30% {
+  23% {
     opacity: 1;
   }
-  50% {
+  37% {
     opacity: 1;
   }
-  55% {
+  43% {
     opacity: 0;
   }
 }
@@ -73,16 +74,16 @@
   0% {
     opacity: 0;
   }
-  45% {
+  37% {
     opacity: 0;
   }
-  55% {
+  43% {
     opacity: 1;
   }
-  75% {
+  57% {
     opacity: 1;
   }
-  80% {
+  63% {
     opacity: 0;
   }
 }
@@ -91,17 +92,17 @@
   0% {
     opacity: 0;
   }
-  70% {
+  57% {
     opacity: 0;
   }
-  80% {
+  63% {
     opacity: 1;
   }
-  100% {
+  77% {
+    filter: grayscale(0%);
     opacity: 1;
   }
 }
-
 
 .home_box {
   width: 100%;
