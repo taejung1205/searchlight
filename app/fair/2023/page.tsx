@@ -2,7 +2,7 @@
 
 import { Header, HomeHeader } from "@/components/header/header";
 import styles from "./page.module.css";
-import { CSSProperties, Suspense, useState } from "react";
+import { CSSProperties, Suspense, useEffect, useState } from "react";
 import { getRandomInteger } from "@/app/utils/functions";
 import {
   ButtonDefault,
@@ -22,12 +22,23 @@ export default function Page() {
   const windowSize = useWindowSize();
   const isMobile = windowSize.width < MOBILE_WIDTH;
 
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setCurrentPage("Home");
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   function selectPage(currentPage: string) {
     switch (currentPage) {
       case "Splash":
         return (
           <Suspense fallback={<></>}>
-            <Splash onClick={() => setCurrentPage("Home")} />
+            <Splash
+              onClick={() => setCurrentPage("Home")}
+              isMobile={isMobile}
+            />
           </Suspense>
         );
       case "Home":
@@ -91,29 +102,58 @@ export default function Page() {
   );
 }
 
-function Splash({ onClick }: { onClick: () => void }) {
+function Splash({
+  onClick,
+  isMobile,
+}: {
+  onClick: () => void;
+  isMobile: boolean;
+}) {
   return (
-    <div onClick={onClick} className={styles.splash_image_box}>
+    <div className={styles.home_box}>
       <Image
-        src="/artwork/윤지훈/윤지훈_Happy Dog Lamp.jpg"
-        className={styles.splash_image_1}
-        alt={"Loading..."}
-        fill={true}
+        src={
+          isMobile
+            ? "/logo/logotype_mobile_long.svg"
+            : "/logo/logotype_web_long.svg"
+        }
+        alt="logo"
+        className={isMobile ? styles.logo_mobile : styles.logo}
+        width={isMobile ? 360 : 960}
+        height={255}
         priority
       />
-      <Image
-        src="/artwork/윤지훈/윤지훈_Homebody Lamp.png"
-        className={styles.splash_image_2}
-        alt={"Loading..."}
-        fill={true}
-      />
-      <Image
-        src="/artwork/윤지훈/윤지훈_Mulberry.jpg"
-        className={styles.splash_image_3}
-        alt={"Loading..."}
-        fill={true}
-        priority
-      />
+      <Space h={60} />
+      <div onClick={onClick} className={styles.splash_image_box}>
+        <Image
+          src="/splash/splash_1.webp"
+          className={styles.splash_image_1}
+          alt={"Loading..."}
+          fill={true}
+          priority
+        />
+        <Image
+          src="/splash/splash_2.webp"
+          className={styles.splash_image_2}
+          alt={"Loading..."}
+          fill={true}
+        />
+        <Image
+          src="/splash/splash_3.webp"
+          className={styles.splash_image_3}
+          alt={"Loading..."}
+          fill={true}
+          priority
+        />
+        <Image
+          src="/splash/splash_4.webp"
+          className={styles.splash_image_4}
+          alt={"Loading..."}
+          fill={true}
+          priority
+        />
+      </div>
+      <Space h={60} />
     </div>
   );
 }
@@ -142,6 +182,17 @@ function Home({
         height={255}
         priority
       />
+      <Space h={60} />
+      <div className={styles.splash_image_box}>
+        <Image
+          src="/splash/splash_4.webp"
+          className={styles.splash_image_home}
+          alt={"Loading..."}
+          fill={true}
+          priority
+        />
+      </div>
+      <Space h={60} />
       <PricetagButton
         text={"Fair Info"}
         onClick={() => setCurrentPage("Fair Info")}
