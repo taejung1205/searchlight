@@ -27,7 +27,6 @@ export default function Page() {
   let positonArray: any[];
 
   useEffect(() => {
-    
     const element = window.document.getElementById(`splash`);
     element?.addEventListener("animationend", () => {
       if (currentPage == "Splash") {
@@ -38,7 +37,7 @@ export default function Page() {
 
   useEffect(() => {
     setPositionArray(getRandomPositionArray(datas.length, windowSize.width));
-  }, [currentPage])
+  }, [currentPage]);
 
   function selectPage(currentPage: string) {
     switch (currentPage) {
@@ -475,6 +474,9 @@ function Artists({
       >
         <div className={styles.page_topic_title}>
           <div className={"A1"}>35 Artists, 200+ Artworks.</div>
+          <Link href={"/artist/image"}>
+            <div className="A1" style={{textDecoration: "underline"}}>(view all)</div>
+          </Link>
         </div>
         <div className={isMobile ? styles.page_body_mobile : styles.page_body}>
           {dataArray.map((item) => {
