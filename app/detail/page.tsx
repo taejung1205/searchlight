@@ -54,9 +54,11 @@ export default function Page() {
             borderBottom: "1px solid #bfbfbf",
             alignItems: isMobile ? "center" : "normal",
           }}
+          rel="preload"
         >
           <ExplanationBox
             explanation={artistData.explanation}
+            abstract={artistData.abstract_long}
             isMobile={isMobile}
           />
           <ArtworkImageBox
@@ -79,10 +81,10 @@ export default function Page() {
                 paddingRight: isMobile ? "14px" : "28px",
                 paddingTop: "10px",
                 paddingBottom: "10px",
-                cursor: "pointerF"
+                cursor: "pointerF",
               }}
             >
-              <img src="/icon/left.svg" style={{height: "20px"}} />
+              <img src="/icon/left.svg" style={{ height: "20px" }} />
               <Space w={isMobile ? 5 : 15} />
               <div className={"F"}>뒤로가기</div>
             </div>
@@ -174,8 +176,10 @@ function ArtworkImageBox({
 
 function ExplanationBox({
   explanation,
+  abstract,
   isMobile,
 }: {
+  abstract: string;
   explanation: string;
   isMobile: boolean;
 }) {
@@ -186,6 +190,8 @@ function ExplanationBox({
         padding: "14px 28px",
       }}
     >
+      <div className="D1" style={{ textAlign: "justify" }}>{`${abstract}`}</div>
+      <Space h={14} />
       <div
         className="D2"
         style={{ textAlign: "justify" }}
