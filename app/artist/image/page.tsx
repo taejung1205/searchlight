@@ -121,6 +121,7 @@ function ImageGrid({
                 backgroundColor: "#D2D1D1"
               }}
               className={style.artwork_image}
+              rel="preload"
             />
           </Link>
         );

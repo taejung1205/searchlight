@@ -3,13 +3,14 @@
 import { Footer } from "@/components/footer/footer";
 import { Header } from "@/components/header/header";
 import { useSearchParams } from "next/navigation";
-import style from "./page.module.css";
+import styles from "./page.module.css";
 import { useState } from "react";
 import { Space } from "@/components/space/space";
 import { NonButtonTag } from "@/components/tag/tag";
 import { ButtonDefault } from "@/components/button/button";
 import { useScrollY, useWindowSize } from "../utils/hooks";
 import { MOBILE_WIDTH } from "../utils/constants";
+import Link from "next/link";
 
 export default function Page() {
   const scrollY = useScrollY();
@@ -22,10 +23,10 @@ export default function Page() {
     return (
       <main>
         <Header currentPage="/detail" />
-        <div className={style.error_page}>
+        <div className={styles.error_page}>
           <p className="H1">잘못된 접근입니다.</p>
         </div>
-        <Footer isMobile={isMobile}/>
+        <Footer isMobile={isMobile} />
       </main>
     );
   }
@@ -42,39 +43,70 @@ export default function Page() {
         isFixed={scrollY > 100}
         isMobile={isMobile}
       />
-      <div className={style.main}>
+      <div className={styles.main}>
         <ArtistName name={artistData.name} />
-        <Space h={30} />
-        <ArtworkImageBox
-          imageIndex={imageIndex}
-          setImageIndex={setImageIndex}
-          artistData={artistData}
-          isMobile={isMobile}
-        />
-        <Space h={30} />
-        <IntroductionBox
-          abstract={artistData.abstract_short}
-          intro={artistData.intro}
-          screenWidth={windowSize.width}
-        />
-        <Space h={30} />
-        <ArtworksBox
-          imageCaptionList={artistData.artworks}
-          isMobile={isMobile}
-        />
-        <Space h={30} />
+        <AbstractShort text={artistData.abstract_short} />
+        <Space h={14} />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: isMobile ? "column" : "row",
+            borderBottom: "1px solid #bfbfbf",
+            alignItems: isMobile ? "center" : "normal",
+          }}
+        >
+          <ExplanationBox
+            explanation={artistData.explanation}
+            isMobile={isMobile}
+          />
+          <ArtworkImageBox
+            imageIndex={imageIndex}
+            setImageIndex={setImageIndex}
+            artistData={artistData}
+            isMobile={isMobile}
+          />
+        </div>
+
+        <Space h={14} />
         <ContactBox artistData={artistData} isMobile={isMobile} />
-        <Space h={120} />
+        <Space h={28} />
+        <div style={{ display: "flex", justifyContent: "end", width: "100%" }}>
+          <Link href="/artist/image">
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                paddingRight: isMobile ? "14px" : "28px",
+                paddingTop: "10px",
+                paddingBottom: "10px",
+                cursor: "pointerF"
+              }}
+            >
+              <img src="/icon/left.svg" style={{height: "20px"}} />
+              <Space w={isMobile ? 5 : 15} />
+              <div className={"F"}>뒤로가기</div>
+            </div>
+          </Link>
+        </div>
+        <Space h={90} />
       </div>
-      <Footer isMobile={isMobile}/>
+      <Footer isMobile={isMobile} />
     </div>
   );
 }
 
 function ArtistName({ name }: { name: string }) {
   return (
-    <div className={style.artist_name_box}>
-      <p className="H1">{name}</p>
+    <div className={styles.artist_title_box}>
+      <div className="A1">{name}</div>
+    </div>
+  );
+}
+
+function AbstractShort({ text }: { text: string }) {
+  return (
+    <div className={styles.artist_title_box}>
+      <div className="D1">{text}</div>
     </div>
   );
 }
@@ -93,14 +125,23 @@ function ArtworkImageBox({
   return (
     <div
       className={
-        isMobile ? style.artwork_image_box_mobile : style.artwrok_image_box
+        isMobile ? styles.artwork_image_box_mobile : styles.artwork_image_box
       }
     >
       <img
         src={`/artwork/${artistData.name}/${artistData.imageFileName[imageIndex]}`}
-        className={isMobile ? style.artwork_image_mobile : style.artwork_image}
+        className={
+          isMobile ? styles.artwork_image_mobile : styles.artwork_image
+        }
       />
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <Space h={14} />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          width: "calc(100% - 60px)",
+        }}
+      >
         <img
           src="/icon/left.svg"
           onClick={() => {
@@ -112,11 +153,9 @@ function ArtworkImageBox({
           }}
           style={{ cursor: "pointer" }}
         />
-        <Space w={30} />
-        <p className="FOOTER" style={{ textAlign: "center" }}>{`${
+        <p className="F" style={{ textAlign: "center" }}>{`${
           imageIndex + 1
         } / ${artistData.imageFileName.length}`}</p>
-        <Space w={30} />
         <img
           src="/icon/right.svg"
           onClick={() => {
@@ -133,52 +172,51 @@ function ArtworkImageBox({
   );
 }
 
-function IntroductionBox({
-  abstract,
-  intro,
-  screenWidth,
+function ExplanationBox({
+  explanation,
+  isMobile,
 }: {
-  abstract: string;
-  intro: string;
-  screenWidth: number;
+  explanation: string;
+  isMobile: boolean;
 }) {
   return (
     <div
       style={{
-        width: screenWidth > MOBILE_WIDTH ? "710px" : `${screenWidth - 60}px`,
-        textAlign: "center",
+        width: isMobile ? "100%" : "50vw",
+        padding: "14px 28px",
       }}
     >
-      <p className="P1">{`"${abstract}"`}</p>
-      <Space h={30} />
-      <p className="P2">{intro}</p>
+      <div
+        className="D2"
+        style={{ textAlign: "justify" }}
+      >{`${explanation}`}</div>
     </div>
   );
 }
 
-function ArtworksBox({
-  imageCaptionList,
-  isMobile,
-}: {
-  imageCaptionList: string[];
-  isMobile: boolean;
-}) {
-  return (
-    <div className={isMobile ? style.items_box_mobile : style.items_box}>
-      <div className={style.line} />
-      <Space h={15} />
-      <p className="FOOTER">artworks</p>
-      <Space h={30} />
-      {imageCaptionList.map((item, index) => {
-        return (
-          <p className="P2" id={`Artwork_${index}`}>{`${
-            index + 1
-          }. ${item}`}</p>
-        );
-      })}
-    </div>
-  );
-}
+// function ArtworksBox({
+//   imageCaptionList,
+//   isMobile,
+// }: {
+//   imageCaptionList: string[];
+//   isMobile: boolean;
+// }) {
+//   return (
+//     <div className={isMobile ? styles.items_box_mobile : styles.items_box}>
+//       <div className={styles.line} />
+//       <Space h={15} />
+//       <p className="FOOTER">artworks</p>
+//       <Space h={30} />
+//       {imageCaptionList.map((item, index) => {
+//         return (
+//           <p className="P2" id={`Artwork_${index}`}>{`${
+//             index + 1
+//           }. ${item}`}</p>
+//         );
+//       })}
+//     </div>
+//   );
+// }
 
 function ContactBox({
   artistData,
@@ -188,56 +226,44 @@ function ContactBox({
   isMobile: boolean;
 }) {
   return (
-    <div className={isMobile ? style.items_box_mobile : style.items_box}>
-      <div className={style.line} />
-      <Space h={15} />
-      <p className="FOOTER">contact</p>
-      <Space h={30} />
+    <div className={isMobile ? styles.items_box_mobile : styles.items_box}>
+      <div className="F">contact</div>
+      <Space h={14} />
       <div style={{ display: "flex" }}>
-        <p className="P2">{`이메일:`}</p>
+        <div className="D2" style={{ width: "80px" }}>{`이메일`}</div>
         <Space w={10} />
         <a href={`mailto:${artistData.email}`}>
-          <p
-            className="P2"
+          <div
+            className="D2"
             style={{ textDecoration: "underline" }}
-          >{`${artistData.email}`}</p>
+          >{`${artistData.email}`}</div>
         </a>
       </div>
 
       {artistData.website.length > 0 ? (
         <div style={{ display: "flex" }}>
-          <p className="P2">{`포트폴리오:`}</p>
+          <div className="D2" style={{ width: "80px" }}>{`홈페이지`}</div>
           <Space w={10} />
           <a href={`https://${artistData.website}`}>
-            <p
-              className="P2"
+            <div
+              className="D2"
               style={{ textDecoration: "underline" }}
-            >{`${artistData.website}`}</p>
+            >{`${artistData.website}`}</div>
           </a>
         </div>
       ) : (
         <></>
       )}
       <div style={{ display: "flex" }}>
-        <p className="P2">{`SNS:`}</p>
+        <div className="D2" style={{ width: "80px" }}>{`SNS`}</div>
         <Space w={10} />
         <a href={`https://${artistData.instagram}`}>
-          <p
-            className="P2"
+          <div
+            className="D2"
             style={{ textDecoration: "underline" }}
-          >{`${artistData.instagram}`}</p>
+          >{`${artistData.instagram}`}</div>
         </a>
       </div>
-      <Space h={30} />
-      <ButtonDefault
-        text="작가 공유하기"
-        onClick={
-          /** TODO */ () => {
-            console.log("hello");
-          }
-        }
-      />
     </div>
   );
 }
-

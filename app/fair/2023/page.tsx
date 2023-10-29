@@ -129,7 +129,7 @@ function Splash({
 }) {
   return (
     <div className={styles.home_box}>
-      <Image
+      <img
         src={
           isMobile
             ? "/logo/logotype_mobile_long.svg"
@@ -139,37 +139,34 @@ function Splash({
         className={isMobile ? styles.logo_mobile : styles.logo}
         width={isMobile ? 360 : 960}
         height={255}
-        priority
+        rel={"preload"}
       />
       <Space h={60} />
       <div onClick={onClick} className={styles.splash_image_box}>
-        <Image
+        <img
           src="/splash/splash_1.webp"
           className={styles.splash_image_1}
           alt={"Loading..."}
-          fill={true}
-          priority
+          rel={"preload"}
         />
-        <Image
+        <img
           src="/splash/splash_2.webp"
           className={styles.splash_image_2}
           alt={"Loading..."}
-          fill={true}
+          rel={"preload"}
         />
-        <Image
+        <img
           src="/splash/splash_3.webp"
           className={styles.splash_image_3}
           alt={"Loading..."}
-          fill={true}
-          priority
+          rel={"preload"}
         />
-        <Image
+        <img
           src="/splash/splash_4.webp"
           id="splash"
           className={styles.splash_image_4}
           alt={"Loading..."}
-          fill={true}
-          priority
+          rel={"preload"}
         />
       </div>
       <Space h={60} />
