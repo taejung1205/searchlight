@@ -320,12 +320,13 @@ function FairInfo({
               장소: 서울시 성동구 연무장17길 4 LES601
             </div>
             <Space h={25} />
-            <ButtonDefault
-              text={"티켓 구입 링크"}
-              onClick={() => {
-                console.log("hello");
-              }}
-            />
+            <a
+              href="https://shoplostandfound.kr/archive/detail.html?product_no=1067&cate_no=1&display_group=2"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <ButtonDefault text={"티켓 구입 링크"} onClick={() => {}} />
+            </a>
             <Space h={50} />
             <div className="A1" style={{ color: "#717171" }}>
               Credit.
@@ -472,7 +473,9 @@ function Artists({
         <div className={styles.page_topic_title}>
           <div className={"A1"}>35 Artists, 200+ Artworks.</div>
           <Link href={"/artist/image"}>
-            <div className="A1" style={{textDecoration: "underline"}}>(view all)</div>
+            <div className="A1" style={{ textDecoration: "underline" }}>
+              (view all)
+            </div>
           </Link>
         </div>
         <div className={isMobile ? styles.page_body_mobile : styles.page_body}>
@@ -521,19 +524,19 @@ const FAIR_INFO_PRICETAG_STYLES: CSSProperties[] = [
     transform: "rotate(-60deg)",
     left: "20vw",
     top: "32vh",
-    position: "absolute",
+    position: "fixed",
   },
   {
     transform: "rotate(9deg)",
     right: "20vw",
     top: "25vh",
-    position: "absolute",
+    position: "fixed",
   },
   {
     transform: "rotate(24deg)",
     left: "15vw",
     top: "50vh",
-    position: "absolute",
+    position: "fixed",
   },
 ];
 
@@ -542,19 +545,19 @@ const GUIDE_PRICETAG_STYLES: CSSProperties[] = [
     transform: "rotate(15deg)",
     left: "30vw",
     bottom: "10vh",
-    position: "absolute",
+    position: "fixed",
   },
   {
     transform: "rotate(-30deg)",
     left: "35vw",
     bottom: "15vh",
-    position: "absolute",
+    position: "fixed",
   },
   {
     transform: "rotate(-15deg)",
     right: "15vw",
     top: "45vh",
-    position: "absolute",
+    position: "fixed",
   },
 ];
 
@@ -563,19 +566,19 @@ const ARTISTS_PRICETAG_STYLES: CSSProperties[] = [
     transform: "rotate(-15deg)",
     right: "30vw",
     bottom: "30vh",
-    position: "absolute",
+    position: "fixed",
   },
   {
     transform: "rotate(-24deg)",
     right: "40vw",
     bottom: "40vh",
-    position: "absolute",
+    position: "fixed",
   },
   {
     transform: "rotate(6deg)",
     left: "40vw",
     bottom: "14vh",
-    position: "absolute",
+    position: "fixed",
   },
 ];
 
@@ -584,18 +587,18 @@ const ABOUT_PRICETAG_STYLES: CSSProperties[] = [
     transform: "rotate(30deg)",
     bottom: "40vh",
     right: "10vw",
-    position: "absolute",
+    position: "fixed",
   },
   {
     transform: "rotate(36deg)",
     left: "16vw",
     bottom: "40vh",
-    position: "absolute",
+    position: "fixed",
   },
   {
     transform: "rotate(-45deg)",
     left: "32vw",
     top: "30vh",
-    position: "absolute",
+    position: "fixed",
   },
 ];

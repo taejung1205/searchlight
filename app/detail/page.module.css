@@ -41,8 +41,7 @@
 
 .artwork_image,
 .artwork_image_mobile {
-  height: 600px;
-  max-width: 100%;
+  width: 100%;
   object-fit: contain;
 }
 

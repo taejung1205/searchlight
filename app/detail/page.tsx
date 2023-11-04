@@ -81,12 +81,12 @@ export default function Page() {
                 paddingRight: isMobile ? "14px" : "28px",
                 paddingTop: "10px",
                 paddingBottom: "10px",
-                cursor: "pointerF",
+                cursor: "pointer"
               }}
             >
-              <img src="/icon/left.svg" style={{ height: "20px" }} />
+              <img src="/icon/left.svg" />
               <Space w={isMobile ? 5 : 15} />
-              <div className={"F"}>뒤로가기</div>
+              <div className={"F"} style={{lineHeight: "10px"}}>뒤로가기</div>
             </div>
           </Link>
         </div>
