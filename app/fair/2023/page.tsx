@@ -9,7 +9,7 @@ import {
   PricetagButton,
   PricetagClicked,
 } from "@/components/button/button";
-import { redirect, useRouter } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { useWindowSize } from "@/app/utils/hooks";
 import { MOBILE_WIDTH } from "@/app/utils/constants";
 import Image from "next/image";
@@ -20,19 +20,47 @@ import Link from "next/link";
 export default function Page() {
   const [pattern, setPattern] = useState<number>(getRandomInteger(3));
   const [isSplashFinished, setIsSplashFinished] = useState<boolean>(false);
-  const [currentPage, setCurrentPage] = useState<string>("SplashHome");
+  const [currentPage, setCurrentPage] = useState<string>("");
   const [positionArray, setPositionArray] = useState<number[]>([]);
   const windowSize = useWindowSize();
+  const searchParams = useSearchParams();
   const isMobile = windowSize.width < MOBILE_WIDTH;
   const datas: any[] = require("/public/data/artist.json");
-  let positonArray: any[];
+  const page = searchParams.get("page") ?? "";
+  const router = useRouter();
+
+  
+
+  useEffect(() => {
+    switch (page) {
+      case "about":
+        setCurrentPage("About");
+        return;
+      case "fairinfo":
+        setCurrentPage("Fair Info");
+        return;
+      case "guide":
+        setCurrentPage("Guide");
+        return;
+      case "artists":
+        setCurrentPage("Artists");
+        return;
+      case "home":
+        setCurrentPage("Home");
+        return;
+      default:
+        setCurrentPage("SplashHome");
+        return;
+    }
+  }, [page]);
 
   useEffect(() => {
     const element = window.document.getElementById(`splash`);
     element?.addEventListener("animationend", () => {
+      console.log("splash finished");
       setIsSplashFinished(true);
     });
-  }, []);
+  }, [currentPage]);
 
   useEffect(() => {
     setPositionArray(getRandomPositionArray(datas.length, windowSize.width));
@@ -104,18 +132,20 @@ export default function Page() {
 
   return (
     <div>
-      {currentPage == "Splash" || currentPage == "Home" ? (
+      {currentPage == "SplashHome" || currentPage == "Home" ? (
         <Header currentPage={"/fair/2023"} isMobile={isMobile} />
       ) : (
         <HomeHeader
           currentPage={currentPage}
           isMobile={isMobile}
-          onCloseButtonClick={() => setCurrentPage("Home")}
+          onCloseButtonClick={() => {
+            router.replace("/fair/2023?page=home");
+          }}
         />
       )}
 
       {selectPage(currentPage)}
-      {currentPage == "Splash" || currentPage == "Home" ? (
+      {currentPage == "SplashHome" || currentPage == "Home" ? (
         <Footer isMobile={isMobile} />
       ) : (
         <></>
@@ -127,7 +157,6 @@ export default function Page() {
 function SplashHome({
   onClick,
   pattern,
-  setCurrentPage,
   isMobile,
   isSplashFinished,
 }: {
@@ -185,22 +214,30 @@ function SplashHome({
         <>
           <PricetagButton
             text={"Fair Info"}
-            onClick={() => setCurrentPage("Fair Info")}
+            onClick={() => {
+              router.push("/fair/2023?page=fairinfo");
+            }}
             style={FAIR_INFO_PRICETAG_STYLES[pattern]}
           />
           <PricetagButton
             text={"About"}
-            onClick={() => setCurrentPage("About")}
+            onClick={() => {
+              router.push("/fair/2023?page=about");
+            }}
             style={ABOUT_PRICETAG_STYLES[pattern]}
           />
           <PricetagButton
             text={"Artists"}
-            onClick={() => setCurrentPage("Artists")}
+            onClick={() => {
+              router.push("/fair/2023?page=artists");
+            }}
             style={ARTISTS_PRICETAG_STYLES[pattern]}
           />
           <PricetagButton
             text={"Guide"}
-            onClick={() => setCurrentPage("Guide")}
+            onClick={() => {
+              router.push("/fair/2023?page=guide");
+            }}
             style={GUIDE_PRICETAG_STYLES[pattern]}
           />
         </>
@@ -251,22 +288,31 @@ function Home({
 
       <PricetagButton
         text={"Fair Info"}
-        onClick={() => setCurrentPage("Fair Info")}
+        onClick={() => {
+          // setCurrentPage("Fair Info");
+          router.push("/fair/2023?page=fairinfo");
+        }}
         style={FAIR_INFO_PRICETAG_STYLES[pattern]}
       />
       <PricetagButton
         text={"About"}
-        onClick={() => setCurrentPage("About")}
+        onClick={() => {
+          router.push("/fair/2023?page=about");
+        }}
         style={ABOUT_PRICETAG_STYLES[pattern]}
       />
       <PricetagButton
         text={"Artists"}
-        onClick={() => setCurrentPage("Artists")}
+        onClick={() => {
+          router.push("/fair/2023?page=artists");
+        }}
         style={ARTISTS_PRICETAG_STYLES[pattern]}
       />
       <PricetagButton
         text={"Guide"}
-        onClick={() => setCurrentPage("Guide")}
+        onClick={() => {
+          router.push("/fair/2023?page=guide");
+        }}
         style={GUIDE_PRICETAG_STYLES[pattern]}
       />
     </div>
