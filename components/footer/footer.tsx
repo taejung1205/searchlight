@@ -52,7 +52,7 @@ function FooterLinks() {
   return (
     <div style={{ display: "flex" }}>
       <a
-        href="https://www.instagram.com/lofa_seoul/"
+        href="https://www.instagram.com/searchlight_fair/"
         target="_blank"
         rel="noreferrer noopener"
       >
@@ -64,7 +64,7 @@ function FooterLinks() {
         |
       </div>
       <a
-        href="https://www.instagram.com/lofa_seoul/"
+        href="https://shoplostandfound.kr/"
         target="_blank"
         rel="noreferrer noopener"
       >

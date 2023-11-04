@@ -116,9 +116,13 @@ function ImageGrid({
             <img
               src={`/artwork/${item.name}/${item.imageFileName[0]}`}
               style={{
-                width: (screenWidth - 40) / divider,
-                height: (screenWidth - 40) / divider,
-                backgroundColor: "#D2D1D1"
+                width: isMobile
+                  ? (screenWidth - 4) / divider
+                  : (screenWidth - 30) / divider,
+                height: isMobile
+                  ? (screenWidth - 4) / divider
+                  : (screenWidth - 30) / divider,
+                backgroundColor: "#D2D1D1",
               }}
               className={style.artwork_image}
               rel="preload"

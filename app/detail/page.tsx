@@ -81,12 +81,14 @@ export default function Page() {
                 paddingRight: isMobile ? "14px" : "28px",
                 paddingTop: "10px",
                 paddingBottom: "10px",
-                cursor: "pointerF",
+                cursor: "pointer",
               }}
             >
-              <img src="/icon/left.svg" style={{ height: "20px" }} />
+              <img src="/icon/left.svg" />
               <Space w={isMobile ? 5 : 15} />
-              <div className={"F"}>뒤로가기</div>
+              <div className={"F"} style={{ lineHeight: "10px" }}>
+                뒤로가기
+              </div>
             </div>
           </Link>
         </div>
@@ -235,16 +237,20 @@ function ContactBox({
     <div className={isMobile ? styles.items_box_mobile : styles.items_box}>
       <div className="F">contact</div>
       <Space h={14} />
-      <div style={{ display: "flex" }}>
-        <div className="D2" style={{ width: "80px" }}>{`이메일`}</div>
-        <Space w={10} />
-        <a href={`mailto:${artistData.email}`}>
-          <div
-            className="D2"
-            style={{ textDecoration: "underline" }}
-          >{`${artistData.email}`}</div>
-        </a>
-      </div>
+      {artistData.email.length > 0 ? (
+        <div style={{ display: "flex" }}>
+          <div className="D2" style={{ width: "80px" }}>{`이메일`}</div>
+          <Space w={10} />
+          <a href={`mailto:${artistData.email}`}>
+            <div
+              className="D2"
+              style={{ textDecoration: "underline" }}
+            >{`${artistData.email}`}</div>
+          </a>
+        </div>
+      ) : (
+        <></>
+      )}
 
       {artistData.website.length > 0 ? (
         <div style={{ display: "flex" }}>
@@ -260,16 +266,20 @@ function ContactBox({
       ) : (
         <></>
       )}
-      <div style={{ display: "flex" }}>
-        <div className="D2" style={{ width: "80px" }}>{`SNS`}</div>
-        <Space w={10} />
-        <a href={`https://${artistData.instagram}`}>
-          <div
-            className="D2"
-            style={{ textDecoration: "underline" }}
-          >{`${artistData.instagram}`}</div>
-        </a>
-      </div>
+      {artistData.instagram.length > 0 ? (
+        <div style={{ display: "flex" }}>
+          <div className="D2" style={{ width: "80px" }}>{`SNS`}</div>
+          <Space w={10} />
+          <a href={`https://${artistData.instagram}`}>
+            <div
+              className="D2"
+              style={{ textDecoration: "underline" }}
+            >{`${artistData.instagram}`}</div>
+          </a>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

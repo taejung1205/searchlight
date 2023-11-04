@@ -9,7 +9,7 @@ import {
   PricetagButton,
   PricetagClicked,
 } from "@/components/button/button";
-import { redirect, useRouter } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { useWindowSize } from "@/app/utils/hooks";
 import { MOBILE_WIDTH } from "@/app/utils/constants";
 import Image from "next/image";
@@ -19,21 +19,48 @@ import Link from "next/link";
 
 export default function Page() {
   const [pattern, setPattern] = useState<number>(getRandomInteger(3));
-  const [currentPage, setCurrentPage] = useState<string>("Splash");
+  const [isSplashFinished, setIsSplashFinished] = useState<boolean>(false);
+  const [currentPage, setCurrentPage] = useState<string>("");
   const [positionArray, setPositionArray] = useState<number[]>([]);
   const windowSize = useWindowSize();
+  const searchParams = useSearchParams();
   const isMobile = windowSize.width < MOBILE_WIDTH;
   const datas: any[] = require("/public/data/artist.json");
-  let positonArray: any[];
+  const page = searchParams.get("page") ?? "";
+  const router = useRouter();
+
+  
+
+  useEffect(() => {
+    switch (page) {
+      case "about":
+        setCurrentPage("About");
+        return;
+      case "fairinfo":
+        setCurrentPage("Fair Info");
+        return;
+      case "guide":
+        setCurrentPage("Guide");
+        return;
+      case "artists":
+        setCurrentPage("Artists");
+        return;
+      case "home":
+        setCurrentPage("Home");
+        return;
+      default:
+        setCurrentPage("SplashHome");
+        return;
+    }
+  }, [page]);
 
   useEffect(() => {
     const element = window.document.getElementById(`splash`);
     element?.addEventListener("animationend", () => {
-      if (currentPage == "Splash") {
-        setCurrentPage("Home");
-      }
+      console.log("splash finished");
+      setIsSplashFinished(true);
     });
-  }, []);
+  }, [currentPage]);
 
   useEffect(() => {
     setPositionArray(getRandomPositionArray(datas.length, windowSize.width));
@@ -41,12 +68,15 @@ export default function Page() {
 
   function selectPage(currentPage: string) {
     switch (currentPage) {
-      case "Splash":
+      case "SplashHome":
         return (
           <Suspense fallback={<></>}>
-            <Splash
-              onClick={() => setCurrentPage("Home")}
+            <SplashHome
+              onClick={() => setIsSplashFinished(true)}
+              pattern={pattern}
+              setCurrentPage={setCurrentPage}
               isMobile={isMobile}
+              isSplashFinished={isSplashFinished}
             />
           </Suspense>
         );
@@ -54,9 +84,11 @@ export default function Page() {
         return (
           <Suspense fallback={<></>}>
             <Home
+              onClick={() => setIsSplashFinished(true)}
               pattern={pattern}
               setCurrentPage={setCurrentPage}
               isMobile={isMobile}
+              isSplashFinished={isSplashFinished}
             />
           </Suspense>
         );
@@ -100,18 +132,20 @@ export default function Page() {
 
   return (
     <div>
-      {currentPage == "Splash" || currentPage == "Home" ? (
+      {currentPage == "SplashHome" || currentPage == "Home" ? (
         <Header currentPage={"/fair/2023"} isMobile={isMobile} />
       ) : (
         <HomeHeader
           currentPage={currentPage}
           isMobile={isMobile}
-          onCloseButtonClick={() => setCurrentPage("Home")}
+          onCloseButtonClick={() => {
+            router.replace("/fair/2023?page=home");
+          }}
         />
       )}
 
       {selectPage(currentPage)}
-      {currentPage == "Splash" || currentPage == "Home" ? (
+      {currentPage == "SplashHome" || currentPage == "Home" ? (
         <Footer isMobile={isMobile} />
       ) : (
         <></>
@@ -120,16 +154,22 @@ export default function Page() {
   );
 }
 
-function Splash({
+function SplashHome({
   onClick,
+  pattern,
   isMobile,
+  isSplashFinished,
 }: {
   onClick: () => void;
+  pattern: number;
+  setCurrentPage: (page: string) => void;
   isMobile: boolean;
+  isSplashFinished: boolean;
 }) {
+  const router = useRouter();
   return (
-    <div className={styles.home_box}>
-      <img
+    <div className={styles.home_box} onClick={onClick}>
+      <Image
         src={
           isMobile
             ? "/logo/logotype_mobile_long.svg"
@@ -139,7 +179,7 @@ function Splash({
         className={isMobile ? styles.logo_mobile : styles.logo}
         width={isMobile ? 360 : 960}
         height={255}
-        rel={"preload"}
+        priority
       />
       <Space h={60} />
       <div onClick={onClick} className={styles.splash_image_box}>
@@ -170,6 +210,40 @@ function Splash({
         />
       </div>
       <Space h={60} />
+      {isSplashFinished ? (
+        <>
+          <PricetagButton
+            text={"Fair Info"}
+            onClick={() => {
+              router.push("/fair/2023?page=fairinfo");
+            }}
+            style={FAIR_INFO_PRICETAG_STYLES[pattern]}
+          />
+          <PricetagButton
+            text={"About"}
+            onClick={() => {
+              router.push("/fair/2023?page=about");
+            }}
+            style={ABOUT_PRICETAG_STYLES[pattern]}
+          />
+          <PricetagButton
+            text={"Artists"}
+            onClick={() => {
+              router.push("/fair/2023?page=artists");
+            }}
+            style={ARTISTS_PRICETAG_STYLES[pattern]}
+          />
+          <PricetagButton
+            text={"Guide"}
+            onClick={() => {
+              router.push("/fair/2023?page=guide");
+            }}
+            style={GUIDE_PRICETAG_STYLES[pattern]}
+          />
+        </>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
@@ -179,9 +253,11 @@ function Home({
   setCurrentPage,
   isMobile,
 }: {
+  onClick: () => void;
   pattern: number;
   setCurrentPage: (page: string) => void;
   isMobile: boolean;
+  isSplashFinished: boolean;
 }) {
   const router = useRouter();
   return (
@@ -209,24 +285,34 @@ function Home({
         />
       </div>
       <Space h={60} />
+
       <PricetagButton
         text={"Fair Info"}
-        onClick={() => setCurrentPage("Fair Info")}
+        onClick={() => {
+          // setCurrentPage("Fair Info");
+          router.push("/fair/2023?page=fairinfo");
+        }}
         style={FAIR_INFO_PRICETAG_STYLES[pattern]}
       />
       <PricetagButton
         text={"About"}
-        onClick={() => setCurrentPage("About")}
+        onClick={() => {
+          router.push("/fair/2023?page=about");
+        }}
         style={ABOUT_PRICETAG_STYLES[pattern]}
       />
       <PricetagButton
         text={"Artists"}
-        onClick={() => setCurrentPage("Artists")}
+        onClick={() => {
+          router.push("/fair/2023?page=artists");
+        }}
         style={ARTISTS_PRICETAG_STYLES[pattern]}
       />
       <PricetagButton
         text={"Guide"}
-        onClick={() => setCurrentPage("Guide")}
+        onClick={() => {
+          router.push("/fair/2023?page=guide");
+        }}
         style={GUIDE_PRICETAG_STYLES[pattern]}
       />
     </div>
@@ -320,12 +406,13 @@ function FairInfo({
               장소: 서울시 성동구 연무장17길 4 LES601
             </div>
             <Space h={25} />
-            <ButtonDefault
-              text={"티켓 구입 링크"}
-              onClick={() => {
-                console.log("hello");
-              }}
-            />
+            <a
+              href="https://shoplostandfound.kr/archive/detail.html?product_no=1067&cate_no=1&display_group=2"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <ButtonDefault text={"티켓 구입 링크"} onClick={() => {}} />
+            </a>
             <Space h={50} />
             <div className="A1" style={{ color: "#717171" }}>
               Credit.
@@ -472,7 +559,9 @@ function Artists({
         <div className={styles.page_topic_title}>
           <div className={"A1"}>35 Artists, 200+ Artworks.</div>
           <Link href={"/artist/image"}>
-            <div className="A1" style={{textDecoration: "underline"}}>(view all)</div>
+            <div className="A1" style={{ textDecoration: "underline" }}>
+              (view all)
+            </div>
           </Link>
         </div>
         <div className={isMobile ? styles.page_body_mobile : styles.page_body}>
@@ -521,19 +610,19 @@ const FAIR_INFO_PRICETAG_STYLES: CSSProperties[] = [
     transform: "rotate(-60deg)",
     left: "20vw",
     top: "32vh",
-    position: "absolute",
+    position: "fixed",
   },
   {
     transform: "rotate(9deg)",
     right: "20vw",
     top: "25vh",
-    position: "absolute",
+    position: "fixed",
   },
   {
     transform: "rotate(24deg)",
     left: "15vw",
     top: "50vh",
-    position: "absolute",
+    position: "fixed",
   },
 ];
 
@@ -542,19 +631,19 @@ const GUIDE_PRICETAG_STYLES: CSSProperties[] = [
     transform: "rotate(15deg)",
     left: "30vw",
     bottom: "10vh",
-    position: "absolute",
+    position: "fixed",
   },
   {
     transform: "rotate(-30deg)",
     left: "35vw",
     bottom: "15vh",
-    position: "absolute",
+    position: "fixed",
   },
   {
     transform: "rotate(-15deg)",
     right: "15vw",
     top: "45vh",
-    position: "absolute",
+    position: "fixed",
   },
 ];
 
@@ -563,19 +652,19 @@ const ARTISTS_PRICETAG_STYLES: CSSProperties[] = [
     transform: "rotate(-15deg)",
     right: "30vw",
     bottom: "30vh",
-    position: "absolute",
+    position: "fixed",
   },
   {
     transform: "rotate(-24deg)",
     right: "40vw",
     bottom: "40vh",
-    position: "absolute",
+    position: "fixed",
   },
   {
     transform: "rotate(6deg)",
     left: "40vw",
     bottom: "14vh",
-    position: "absolute",
+    position: "fixed",
   },
 ];
 
@@ -584,18 +673,18 @@ const ABOUT_PRICETAG_STYLES: CSSProperties[] = [
     transform: "rotate(30deg)",
     bottom: "40vh",
     right: "10vw",
-    position: "absolute",
+    position: "fixed",
   },
   {
     transform: "rotate(36deg)",
     left: "16vw",
     bottom: "40vh",
-    position: "absolute",
+    position: "fixed",
   },
   {
     transform: "rotate(-45deg)",
     left: "32vw",
     top: "30vh",
-    position: "absolute",
+    position: "fixed",
   },
 ];
