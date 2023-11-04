@@ -18,21 +18,21 @@
 
 .splash_image_1 {
   opacity: 0;
-  animation: fade_1 5s linear;
+  animation: fade_1 3.75s linear;
 }
 
 .splash_image_2 {
   opacity: 0;
-  animation: fade_2 5s linear;
+  animation: fade_2 3.75s linear;
 }
 
 .splash_image_3 {
   opacity: 0;
-  animation: fade_3 5s linear;
+  animation: fade_3 3.75s linear;
 }
 
 .splash_image_4 {
-  animation: fade_4 5s linear;
+  animation: fade_4 3.75s linear;
   filter: grayscale(100%);
   opacity: 0.5;
 }
@@ -47,7 +47,7 @@
   23% {
     opacity: 1;
   }
-  100% {
+  77% {
     opacity: 1;
   }
 }
@@ -65,7 +65,7 @@
   37% {
     opacity: 1;
   }
-  43% {
+  77% {
     opacity: 1;
   }
 }
@@ -83,7 +83,7 @@
   57% {
     opacity: 1;
   }
-  63% {
+  77% {
     opacity: 1;
   }
 }

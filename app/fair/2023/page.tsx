@@ -19,7 +19,8 @@ import Link from "next/link";
 
 export default function Page() {
   const [pattern, setPattern] = useState<number>(getRandomInteger(3));
-  const [currentPage, setCurrentPage] = useState<string>("Splash");
+  const [isSplashFinished, setIsSplashFinished] = useState<boolean>(false);
+  const [currentPage, setCurrentPage] = useState<string>("SplashHome");
   const [positionArray, setPositionArray] = useState<number[]>([]);
   const windowSize = useWindowSize();
   const isMobile = windowSize.width < MOBILE_WIDTH;
@@ -29,9 +30,7 @@ export default function Page() {
   useEffect(() => {
     const element = window.document.getElementById(`splash`);
     element?.addEventListener("animationend", () => {
-      if (currentPage == "Splash") {
-        setCurrentPage("Home");
-      }
+      setIsSplashFinished(true);
     });
   }, []);
 
@@ -41,12 +40,15 @@ export default function Page() {
 
   function selectPage(currentPage: string) {
     switch (currentPage) {
-      case "Splash":
+      case "SplashHome":
         return (
           <Suspense fallback={<></>}>
-            <Splash
-              onClick={() => setCurrentPage("Home")}
+            <SplashHome
+              onClick={() => setIsSplashFinished(true)}
+              pattern={pattern}
+              setCurrentPage={setCurrentPage}
               isMobile={isMobile}
+              isSplashFinished={isSplashFinished}
             />
           </Suspense>
         );
@@ -54,9 +56,11 @@ export default function Page() {
         return (
           <Suspense fallback={<></>}>
             <Home
+              onClick={() => setIsSplashFinished(true)}
               pattern={pattern}
               setCurrentPage={setCurrentPage}
               isMobile={isMobile}
+              isSplashFinished={isSplashFinished}
             />
           </Suspense>
         );
@@ -120,16 +124,23 @@ export default function Page() {
   );
 }
 
-function Splash({
+function SplashHome({
   onClick,
+  pattern,
+  setCurrentPage,
   isMobile,
+  isSplashFinished,
 }: {
   onClick: () => void;
+  pattern: number;
+  setCurrentPage: (page: string) => void;
   isMobile: boolean;
+  isSplashFinished: boolean;
 }) {
+  const router = useRouter();
   return (
-    <div className={styles.home_box}>
-      <img
+    <div className={styles.home_box} onClick={onClick}>
+      <Image
         src={
           isMobile
             ? "/logo/logotype_mobile_long.svg"
@@ -139,7 +150,7 @@ function Splash({
         className={isMobile ? styles.logo_mobile : styles.logo}
         width={isMobile ? 360 : 960}
         height={255}
-        rel={"preload"}
+        priority
       />
       <Space h={60} />
       <div onClick={onClick} className={styles.splash_image_box}>
@@ -170,6 +181,32 @@ function Splash({
         />
       </div>
       <Space h={60} />
+      {isSplashFinished ? (
+        <>
+          <PricetagButton
+            text={"Fair Info"}
+            onClick={() => setCurrentPage("Fair Info")}
+            style={FAIR_INFO_PRICETAG_STYLES[pattern]}
+          />
+          <PricetagButton
+            text={"About"}
+            onClick={() => setCurrentPage("About")}
+            style={ABOUT_PRICETAG_STYLES[pattern]}
+          />
+          <PricetagButton
+            text={"Artists"}
+            onClick={() => setCurrentPage("Artists")}
+            style={ARTISTS_PRICETAG_STYLES[pattern]}
+          />
+          <PricetagButton
+            text={"Guide"}
+            onClick={() => setCurrentPage("Guide")}
+            style={GUIDE_PRICETAG_STYLES[pattern]}
+          />
+        </>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
@@ -179,9 +216,11 @@ function Home({
   setCurrentPage,
   isMobile,
 }: {
+  onClick: () => void;
   pattern: number;
   setCurrentPage: (page: string) => void;
   isMobile: boolean;
+  isSplashFinished: boolean;
 }) {
   const router = useRouter();
   return (
@@ -209,6 +248,7 @@ function Home({
         />
       </div>
       <Space h={60} />
+
       <PricetagButton
         text={"Fair Info"}
         onClick={() => setCurrentPage("Fair Info")}
