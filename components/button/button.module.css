@@ -94,6 +94,7 @@
 
 .button_default:hover {
   background: #fff;
+  border: 1px solid var(--white, #FFF);;
   color: #0f1012;
 }
 
