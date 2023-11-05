@@ -259,7 +259,7 @@ function Home({
   const router = useRouter();
   return (
     <div className={styles.home_box}>
-      <Image
+     <img
         src={
           isMobile
             ? "/logo/logotype_mobile_long.svg"
@@ -267,9 +267,6 @@ function Home({
         }
         alt="logo"
         className={isMobile ? styles.logo_mobile : styles.logo}
-        width={isMobile ? 360 : 960}
-        height={255}
-        priority
       />
       <Space h={60} />
       <div className={styles.splash_image_box}>
