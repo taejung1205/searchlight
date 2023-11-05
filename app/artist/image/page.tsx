@@ -4,7 +4,7 @@ import { Footer } from "@/components/footer/footer";
 import { Header } from "@/components/header/header";
 import { useSearchParams } from "next/navigation";
 import style from "./page.module.css";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Space } from "@/components/space/space";
 import { useScrollY, useWindowSize } from "../../utils/hooks";
 import Link from "next/link";
@@ -110,7 +110,7 @@ function ImageGrid({
   const divider = isMobile ? (isBig ? 1 : 2) : isBig ? 3 : 6;
   const array = isMobile ? dataArray.slice(0, shownImageCount) : dataArray;
   return (
-    <>
+    <Suspense fallback={<></>}>
       <div
         className={
           isMobile
@@ -126,11 +126,13 @@ function ImageGrid({
           return (
             <Link href={`/detail?index=${item.index}`}>
               <div className={style.artwork_image_box}>
-                <img
-                  src={`/artwork/${item.name}/${item.imageFileName[0]}`}
-                  className={style.artwork_image}
-                  rel="preload"
-                />
+                <Suspense fallback={<>Loading</>}>
+                  <img
+                    src={`/artwork/${item.name}/${item.imageFileName[0]}`}
+                    className={style.artwork_image}
+                    rel="preload"
+                  />
+                </Suspense>
               </div>
             </Link>
           );
@@ -153,6 +155,6 @@ function ImageGrid({
       ) : (
         <></>
       )}
-    </>
+    </Suspense>
   );
 }
