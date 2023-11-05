@@ -56,9 +56,9 @@ export function PricetagButton({
   return (
     <div className={styles.pricetag_default} onClick={onClick} style={style}>
       <img
-        src="/icon/pricetag_default.png"
+        src="/icon/pricetag_default.svg"
         alt="loading..."
-        style={{ position: "absolute", top: 0, left: 0 }}
+        style={{ position: "absolute", top: 0, left: 0, width: 86, height: 42 }}
         rel="preload"
       />
       <div
@@ -74,12 +74,11 @@ export function PricetagButton({
 export function PricetagClicked({ style }: { style: CSSProperties }) {
   return (
     <div className={styles.pricetag_clicked} style={style}>
-      <Image
-        src="/icon/pricetag_clicked.png"
+      <img
+        src="/icon/pricetag_clicked.svg"
         alt="loading..."
-        style={{ position: "absolute", top: 0, left: 0 }}
-        priority={true}
-        fill={true}
+        style={{ position: "absolute", top: 0, left: 0, width: 86, height: 42 }}
+        rel="preload"
       />
     </div>
   );

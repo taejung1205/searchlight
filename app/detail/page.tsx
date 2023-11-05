@@ -44,8 +44,8 @@ export default function Page() {
         isMobile={isMobile}
       />
       <div className={styles.main}>
-        <ArtistName name={artistData.name} />
-        <AbstractShort text={artistData.abstract_short} />
+        <ArtistName name={artistData.name} isMobile={isMobile}/>
+        <AbstractShort text={artistData.abstract_short} isMobile={isMobile} />
         <Space h={14} />
         <div
           style={{
@@ -99,17 +99,17 @@ export default function Page() {
   );
 }
 
-function ArtistName({ name }: { name: string }) {
+function ArtistName({ name, isMobile }: { name: string, isMobile: boolean }) {
   return (
-    <div className={styles.artist_title_box}>
+    <div className={isMobile ? styles.artist_title_box_mobile : styles.artist_title_box}>
       <div className="A1">{name}</div>
     </div>
   );
 }
 
-function AbstractShort({ text }: { text: string }) {
+function AbstractShort({ text, isMobile }: { text: string, isMobile: boolean }) {
   return (
-    <div className={styles.artist_title_box}>
+    <div className={isMobile ? styles.artist_title_box_mobile : styles.artist_title_box}>
       <div className="D1">{text}</div>
     </div>
   );
@@ -189,7 +189,7 @@ function ExplanationBox({
     <div
       style={{
         width: isMobile ? "100%" : "50vw",
-        padding: "14px 28px",
+        padding: isMobile ? "0px 14px" : "14px 28px",
       }}
     >
       <div className="D1" style={{ textAlign: "justify" }}>{`${abstract}`}</div>

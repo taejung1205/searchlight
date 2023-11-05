@@ -38,6 +38,7 @@ export default function Page() {
       />
       <div className={style.main}>
         <Subheader isMobile={isMobile} isBig={isBig} setIsBig={setIsBig} />
+        <Space h={1} />
         <ImageGrid
           isMobile={isMobile}
           isBig={isBig}
@@ -109,36 +110,41 @@ function ImageGrid({
   const divider = isMobile ? (isBig ? 1 : 2) : isBig ? 3 : 6;
   const array = isMobile ? dataArray.slice(0, shownImageCount) : dataArray;
   return (
-    <div className={style.image_grid}>
-      {array.map((item) => {
-        return (
-          <Link href={`/detail?index=${item.index}`}>
-            <img
-              src={`/artwork/${item.name}/${item.imageFileName[0]}`}
-              style={{
-                width: isMobile
-                  ? (screenWidth - 4) / divider
-                  : (screenWidth - 30) / divider,
-                height: isMobile
-                  ? (screenWidth - 4) / divider
-                  : (screenWidth - 30) / divider,
-                backgroundColor: "#D2D1D1",
-              }}
-              className={style.artwork_image}
-              rel="preload"
-            />
-          </Link>
-        );
-      })}
+    <>
+      <div
+        className={
+          isMobile
+            ? isBig
+              ? style.image_grid_big_mobile
+              : style.image_grid_small_mobile
+            : isBig
+            ? style.image_grid_big
+            : style.image_grid_small
+        }
+      >
+        {array.map((item) => {
+          return (
+            <Link href={`/detail?index=${item.index}`}>
+              <div className={style.artwork_image_box}>
+                <img
+                  src={`/artwork/${item.name}/${item.imageFileName[0]}`}
+                  className={style.artwork_image}
+                  rel="preload"
+                />
+              </div>
+            </Link>
+          );
+        })}
+      </div>
       {isMobile ? (
         <>
           <div style={{ width: "100%" }} />
           <Space h={30} />
-          <p className="FOOTER">more</p>
-          <Space h={30} />
+          <div className="F">더보기</div>
+          <Space h={10} />
           <img
-            src="/icon/unfold.svg"
-            style={{ cursor: "pointer", width: "30px", height: "30px" }}
+            src="/icon/down.svg"
+            style={{ cursor: "pointer" }}
             onClick={() => {
               setShownImageCount(shownImageCount + 8);
             }}
@@ -147,6 +153,6 @@ function ImageGrid({
       ) : (
         <></>
       )}
-    </div>
+    </>
   );
 }
