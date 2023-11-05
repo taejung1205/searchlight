@@ -389,6 +389,7 @@ function FairInfo({
               style={{
                 width: 390,
                 maxWidth: "calc(100vw - 30px)",
+                border: "1px solid #B3B3B3"
               }}
               src={"/poster/poster.webp"}
               alt={""}

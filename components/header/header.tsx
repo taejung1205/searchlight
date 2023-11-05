@@ -43,7 +43,7 @@ export function Header({
         <div className={isMobile ? styles.menu_box_mobile : styles.menu_box}>
           <img
             src="/icon/menu_close.svg"
-            className={styles.menu_close_button}
+            className={isMobile ? styles.menu_close_button_mobile : styles.menu_close_button}
             onClick={() => {
               setIsMenuOpened(false);
             }}

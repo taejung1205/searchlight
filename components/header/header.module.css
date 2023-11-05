@@ -8,7 +8,7 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #bfbfbf;
-  background-color: #D2D1D1;
+  background-color: #d2d1d1;
   z-index: 1;
 }
 
@@ -75,13 +75,19 @@
   flex-direction: column;
 }
 
-.menu_close_button {
+.menu_close_button,
+.menu_close_button_mobile {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 14px;
+  right: 28px;
   cursor: pointer;
   width: 18px;
   height: 18px;
+}
+
+.menu_close_button_mobile {
+  top: 10px;
+  right: 15px;
 }
 
 .line_narrow {
