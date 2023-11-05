@@ -10,6 +10,7 @@ import { useScrollY, useWindowSize } from "../../utils/hooks";
 import Link from "next/link";
 import { MOBILE_WIDTH } from "../../utils/constants";
 import { getShuffledArray } from "@/app/utils/functions";
+import Image from "next/image";
 
 export default function Page() {
   const scrollY = useScrollY();
@@ -122,14 +123,18 @@ function ImageGrid({
             : style.image_grid_small
         }
       >
-        {array.map((item) => {
+        {array.map((item, index) => {
           return (
             <Link href={`/detail?index=${item.index}`}>
               <div className={style.artwork_image_box}>
-                <img
+                <Image
                   src={`/artwork/${item.name}/${item.imageFileName[0]}`}
                   className={style.artwork_image}
-                  rel="preload"
+                  alt={"X"}
+                  placeholder="blur"
+                  blurDataURL="/icon/close.svg"
+                  width={screenWidth / divider}     
+                  height={screenWidth / divider}
                 />
               </div>
             </Link>
