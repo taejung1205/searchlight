@@ -4,7 +4,7 @@ import { Footer } from "@/components/footer/footer";
 import { Header } from "@/components/header/header";
 import { useSearchParams } from "next/navigation";
 import styles from "./page.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Space } from "@/components/space/space";
 import { NonButtonTag } from "@/components/tag/tag";
 import { ButtonDefault } from "@/components/button/button";
@@ -35,6 +35,14 @@ export default function Page() {
   const artistData = datas[index];
 
   const [imageIndex, setImageIndex] = useState<number>(0);
+
+  useEffect(() => {
+    const image = document.createElement("img");
+    for(let i = 0; i < artistData.imageFileName.length; i++){
+      image.src =
+      `/artwork/${artistData.name}/${artistData.imageFileName[i]}`;
+    }
+  }, [])
 
   return (
     <div>
