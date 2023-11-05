@@ -115,7 +115,7 @@
 }
 
 .pricetag_clicked {
-  opacity: 0.5;
+  mix-blend-mode: multiply;
 }
 
 @keyframes fade_anim {

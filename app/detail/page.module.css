@@ -14,12 +14,17 @@
   height: 500px;
 }
 
-.artist_title_box {
+.artist_title_box,
+.artist_title_box_mobile {
   border-bottom: 1px solid #bfbfbf;
   display: flex;
   width: 100%;
   padding: 14px 28px;
   align-items: center;
+}
+
+.artist_title_box_mobile {
+  padding: 10px 15px;
 }
 
 .artwork_image_box,
@@ -28,15 +33,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 14px 28px;
 }
 
 .artwork_image_box {
   width: 50vw;
+  padding: 14px 28px;
 }
 
 .artwork_image_box_mobile {
-  width: calc(100vw - 30px);
+  width: 100vw;
+  padding: 21px 14px;
 }
 
 .artwork_image,
@@ -45,9 +51,6 @@
   object-fit: contain;
 }
 
-.artwork_image_mobile {
-  height: 330px;
-}
 
 .line {
   width: 100%;
