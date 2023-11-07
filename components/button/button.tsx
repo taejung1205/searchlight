@@ -56,13 +56,13 @@ export function PricetagButton({
   return (
     <Suspense>
       <div className={styles.pricetag_default} onClick={onClick} style={style}>
-        <Image
+        <img
           src="/icon/pricetag-default.png"
           alt="loading..."
           style={{ position: "absolute", top: 0, left: 0 }}
           width={86}
           height={42}
-          priority
+          rel="preload"
         />
         <div
           className="B"
@@ -78,13 +78,13 @@ export function PricetagButton({
 export function PricetagClicked({ style }: { style: CSSProperties }) {
   return (
     <div className={styles.pricetag_clicked} style={style}>
-      <Image
-        src="/icon/pricetag-clicked.png"
+      <img
+        src="/icon/pricetag-clicked.svg"
         alt="loading..."
         style={{ position: "absolute", top: 0, left: 0 }}
         width={86}
         height={42}
-        priority
+        rel="preload"
       />
     </div>
   );
