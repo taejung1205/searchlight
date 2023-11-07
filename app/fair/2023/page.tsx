@@ -29,8 +29,6 @@ export default function Page() {
   const page = searchParams.get("page") ?? "";
   const router = useRouter();
 
-  
-
   useEffect(() => {
     switch (page) {
       case "about":
@@ -259,7 +257,7 @@ function Home({
   const router = useRouter();
   return (
     <div className={styles.home_box}>
-     <img
+      <img
         src={
           isMobile
             ? "/logo/logotype_mobile_long.svg"
@@ -358,6 +356,16 @@ function About({ pattern, isMobile }: { pattern: number; isMobile: boolean }) {
             불빛으로, 컬렉터에게는 작품을 발견하는 즐거운 반짝임으로 함께 하길
             기대한다.
           </div>
+          <div
+            style={{
+              justifyContent: "end",
+              display: "flex",
+              marginTop: 28,
+              marginBottom: 42,
+            }}
+          >
+            <CloseButton />
+          </div>
         </div>
       </div>
     </div>
@@ -389,7 +397,7 @@ function FairInfo({
               style={{
                 width: 390,
                 maxWidth: "calc(100vw - 30px)",
-                border: "1px solid #B3B3B3"
+                border: "1px solid #B3B3B3",
               }}
               src={"/poster/poster.webp"}
               alt={""}
@@ -414,16 +422,28 @@ function FairInfo({
             </div>
             <Space h={14} />
             <div className="D2" style={{ color: "#717171" }}>
-              주최 및 주관: 로파서울
+              주최 및 주관: 따바프레스, 로파서울
               <br />
-              후원: 예술경영지원센터
+              후원: 문화체육관광부, (재)예술경영지원센터, 토스플레이스
               <br />
-              협력: T.T.T.C 스튜디오
+              협력: TTTC STUDIO, 오가현
               <br />
               그래픽디자인: 이응셋
-              <br />웹 디자인: 오가현
-              <br />웹 개발: 김태정
+              <br />
+              웹디자인: 오가현
+              <br />
+              웹개발: 김태정
             </div>
+          </div>
+          <div
+            style={{
+              justifyContent: "end",
+              display: "flex",
+              marginTop: 28,
+              marginBottom: 42,
+            }}
+          >
+            <CloseButton />
           </div>
         </div>
       </div>
@@ -432,7 +452,6 @@ function FairInfo({
 }
 
 function Guide({ pattern, isMobile }: { pattern: number; isMobile: boolean }) {
-  const router = useRouter();
   return (
     <div className={styles.home_box}>
       <PricetagClicked style={GUIDE_PRICETAG_STYLES[pattern]} />
@@ -482,8 +501,8 @@ function Guide({ pattern, isMobile }: { pattern: number; isMobile: boolean }) {
                 style={{ textAlign: "justify", width: "100%" }}
               >
                 관람객은 입장 시 본격적인 관람에 앞서 페어에 관한 간략한 설명과
-                함께 리셉션에 소지품을 맡긴 후 세 가지 질문이 담긴 박스 전개도와
-                펜을 받게 됩니다. 
+                함께 리셉션에 소지품을 맡긴 후 세 가지 질문이 담긴 리플렛과 펜을
+                받게 됩니다.
               </div>
             </div>
             <Space h={14} />
@@ -498,7 +517,7 @@ function Guide({ pattern, isMobile }: { pattern: number; isMobile: boolean }) {
                 style={{ textAlign: "justify", width: "100%" }}
               >
                 총 200여 점의 작품을 살펴보며, 질문에 상응하는 세 가지 작품을
-                신중히 고른 후, 작품 번호를 기재합니다
+                신중히 고른 후, 작품 코드를 기재합니다.
               </div>
             </div>
             <Space h={14} />
@@ -513,19 +532,23 @@ function Guide({ pattern, isMobile }: { pattern: number; isMobile: boolean }) {
                 style={{ textAlign: "justify", width: "100%" }}
               >
                 관람 종료 후 작성한 카드를 리셉션에 제출합니다. 스태프는 선택한
-                작품의 번호를 확인하고 그에 맞는 작가 한줄평 프라이스 택으로
-                교환해드립니다. 
+                작품의 번호를 확인하고 그에 맞는 작가 한 줄 문구로
+                교환해드립니다.
               </div>
             </div>
           </div>
           <Space h={28} />
-          {/* <div
+          <img src="/map/map.svg" />
+          <div
             style={{
-              backgroundColor: "grey",
-              width: "100%",
-              height: "240px",
+              justifyContent: "end",
+              display: "flex",
+              marginTop: 28,
+              marginBottom: 42,
             }}
-          /> */}
+          >
+            <CloseButton />
+          </div>
         </div>
       </div>
     </div>
@@ -574,7 +597,37 @@ function Artists({
               </div>
             );
           })}
+          <div
+            style={{
+              justifyContent: "end",
+              display: "flex",
+              marginTop: 28,
+              marginBottom: 42,
+            }}
+          >
+            <CloseButton />
+          </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function CloseButton() {
+  const router = useRouter();
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        cursor: "pointer",
+      }}
+      onClick={() => router.replace("/fair/2023?page=home")}
+    >
+      <img src="/icon/popup-close.svg" />
+      <Space w={12} />
+      <div className={"F"} style={{ lineHeight: "10px" }}>
+        뒤로가기
       </div>
     </div>
   );
