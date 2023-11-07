@@ -627,7 +627,7 @@ function CloseButton() {
       <img src="/icon/popup-close.svg" />
       <Space w={12} />
       <div className={"F"} style={{ lineHeight: "10px" }}>
-        뒤로가기
+        닫기
       </div>
     </div>
   );
