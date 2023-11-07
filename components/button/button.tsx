@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import { CSSProperties, Suspense } from "react";
 import styles from "./button.module.css";
 import Image from "next/image";
 
@@ -54,22 +54,24 @@ export function PricetagButton({
   style: CSSProperties;
 }) {
   return (
-    <div className={styles.pricetag_default} onClick={onClick} style={style}>
-      <Image
-        src="/icon/pricetag-default.png"
-        alt="loading..."
-        style={{ position: "absolute", top: 0, left: 0}}
-        width={86}
-        height={42}
-        priority
-      />
-      <div
-        className="B"
-        style={{ color: "#fff", zIndex: 1, position: "absolute" }}
-      >
-        {text}
+    <Suspense>
+      <div className={styles.pricetag_default} onClick={onClick} style={style}>
+        <Image
+          src="/icon/pricetag-default.png"
+          alt="loading..."
+          style={{ position: "absolute", top: 0, left: 0 }}
+          width={86}
+          height={42}
+          priority
+        />
+        <div
+          className="B"
+          style={{ color: "#fff", zIndex: 1, position: "absolute" }}
+        >
+          {text}
+        </div>
       </div>
-    </div>
+    </Suspense>
   );
 }
 
@@ -79,7 +81,7 @@ export function PricetagClicked({ style }: { style: CSSProperties }) {
       <Image
         src="/icon/pricetag-clicked.png"
         alt="loading..."
-        style={{ position: "absolute", top: 0, left: 0}}
+        style={{ position: "absolute", top: 0, left: 0 }}
         width={86}
         height={42}
         priority
