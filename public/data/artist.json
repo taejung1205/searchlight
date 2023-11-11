@@ -132,11 +132,7 @@
     "email": "lowatapestry@gmail.com",
     "website": "",
     "instagram": "https://www.instagram.com/lowakim_/",
-    "imageFileName": [
-      "image (1).webp",
-      "image (2).webp",
-      "image (3).webp"
-    ]
+    "imageFileName": ["image (1).webp", "image (2).webp", "image (3).webp"]
   },
   {
     "index": 6,
@@ -157,7 +153,8 @@
       "image (6).webp",
       "image (7).webp",
       "image (8).webp",
-      "image (9).webp"
+      "image (9).webp",
+      "image (10).webp"
     ]
   },
   {
@@ -211,7 +208,13 @@
     "email": "7lotus4@naver.com",
     "website": "",
     "instagram": "https://www.instagram.com/soy_chuchoter/",
-    "imageFileName": ["image.webp"]
+    "imageFileName": [
+      "image (1).webp",
+      "image (2).webp",
+      "image (3).webp",
+      "image (4).webp",
+      "image (5).webp"
+    ]
   },
   {
     "index": 10,
@@ -223,10 +226,7 @@
     "email": "qkrthdml@gmail.com",
     "website": "",
     "instagram": "https://www.instagram.com/soyee_pvrk/",
-    "imageFileName": [
-      "image (1).webp",
-      "image (2).webp"
-    ]
+    "imageFileName": ["image (1).webp", "image (2).webp"]
   },
   {
     "index": 11,
@@ -266,7 +266,11 @@
       "image (2).webp",
       "image (3).webp",
       "image (4).webp",
-      "image (5).webp"
+      "image (5).webp",
+      "image (6).webp",
+      "image (7).webp",
+      "image (8).webp",
+      "image (9).webp"
     ]
   },
   {
@@ -355,7 +359,9 @@
       "image (1).webp",
       "image (2).webp",
       "image (3).webp",
-      "image (4).webp"
+      "image (4).webp",
+      "image (5).webp",
+      "image (6).webp"
     ]
   },
   {
@@ -368,10 +374,7 @@
     "email": "positiv.kr@gmail.com",
     "website": "www.positiv.kr",
     "instagram": "https://www.instagram.com/positiv.kr/",
-    "imageFileName": [
-      "image (1).webp",
-      "image (2).webp"
-    ]
+    "imageFileName": ["image (1).webp", "image (2).webp", "image (3).webp"]
   },
   {
     "index": 20,
@@ -423,11 +426,7 @@
     "email": "llmjmj1210@naver.com",
     "website": "",
     "instagram": "https://www.instagram.com/ml.c___/",
-    "imageFileName": [
-      "image (1).webp",
-      "image (2).webp",
-      "image (3).webp"
-    ]
+    "imageFileName": ["image (1).webp", "image (2).webp", "image (3).webp"]
   },
   {
     "index": 23,
@@ -458,9 +457,11 @@
     "website": "drawingbyisu.cargo.site",
     "instagram": "https://www.instagram.com/isu_kim_/",
     "imageFileName": [
-      "2023_Drawing_01.webp",
-      "2023_Drawing_02.webp",
-      "2023_Drawing_03.webp"
+      "image (1).webp",
+      "image (2).webp",
+      "image (3).webp",
+      "image (4).webp",
+      "image (5).webp"
     ]
   },
   {
@@ -518,7 +519,7 @@
       "image (10).webp"
     ]
   },
-  
+
   {
     "index": 28,
     "name": "정도이, 정재나",
@@ -556,10 +557,7 @@
       "image (1).webp",
       "image (2).webp",
       "image (3).webp",
-      "image (4).webp",
-      "image (5).webp",
-      "image (6).webp",
-      "image (7).webp"
+      "image (4).webp"
     ]
   },
   {
@@ -578,7 +576,11 @@
       "image (3).webp",
       "image (4).webp",
       "image (5).webp",
-      "image (6).webp"
+      "image (6).webp",
+      "image (7).webp",
+      "image (8).webp",
+      "image (9).webp",
+      "image (10).webp"
     ]
   },
   {
@@ -611,7 +613,9 @@
       "image (5).webp",
       "image (6).webp",
       "image (7).webp",
-      "image (8).webp"
+      "image (8).webp",
+      "image (9).webp",
+      "image (10).webp"
     ]
   },
   {
@@ -624,7 +628,12 @@
     "email": "cbs2063@gmail.com",
     "website": "",
     "instagram": "https://www.instagram.com/beomseok_chae/",
-    "imageFileName": ["image (1).webp", "image (2).webp"]
+    "imageFileName": [
+      "image (1).webp",
+      "image (2).webp",
+      "image (3).webp",
+      "image (4).webp"
+    ]
   },
   {
     "index": 34,
