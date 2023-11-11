@@ -34,7 +34,10 @@ export default function Page() {
 
   useEffect(() => {
     if (isMobile) {
-      if (loadedImageCount >= shownImageCount || loadedImageCount >= dataArray.length) {
+      if (
+        loadedImageCount >= shownImageCount ||
+        loadedImageCount >= dataArray.length
+      ) {
         setIsAllImageLoaded(true);
       } else {
         setIsAllImageLoaded(false);
@@ -173,11 +176,18 @@ function ImageGrid({
           );
         })}
         {isAllImageLoaded ? (
-          <></>
+          <>
+            
+          </>
         ) : (
-          <div className={style.loading_overlay} >
-            <img src="/icon/circle-loader.gif" className={style.loading_overlay_image} rel="preload"/>
-          </div>
+          <>
+            <div className={style.loading_overlay} />
+            <img
+              src="/icon/circle-loader.gif"
+              className={style.loading_overlay_image}
+              rel="preload"
+            />
+          </>
         )}
       </div>
       {isMobile ? (
