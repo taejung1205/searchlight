@@ -24,7 +24,7 @@ export default function Page() {
       <main>
         <Header currentPage="/detail" />
         <div className={styles.error_page}>
-          <p className="H1">잘못된 접근입니다.</p>
+          <div className="H1">잘못된 접근입니다.</div>
         </div>
         <Footer isMobile={isMobile} />
       </main>
@@ -38,11 +38,10 @@ export default function Page() {
 
   useEffect(() => {
     const image = document.createElement("img");
-    for(let i = 0; i < artistData.imageFileName.length; i++){
-      image.src =
-      `/artwork/${artistData.name}/${artistData.imageFileName[i]}`;
+    for (let i = 0; i < artistData.imageFileName.length; i++) {
+      image.src = `/artwork/${artistData.name}/${artistData.imageFileName[i]}`;
     }
-  }, [])
+  }, []);
 
   return (
     <div>
@@ -52,7 +51,7 @@ export default function Page() {
         isMobile={isMobile}
       />
       <div className={styles.main}>
-        <ArtistName name={artistData.name} isMobile={isMobile}/>
+        <ArtistName name={artistData.name} isMobile={isMobile} />
         <AbstractShort text={artistData.abstract_short} isMobile={isMobile} />
         <Space h={14} />
         <div
@@ -69,6 +68,7 @@ export default function Page() {
             abstract={artistData.abstract_long}
             isMobile={isMobile}
           />
+          <Space h={14}/>
           <ArtworkImageBox
             imageIndex={imageIndex}
             setImageIndex={setImageIndex}
@@ -107,17 +107,31 @@ export default function Page() {
   );
 }
 
-function ArtistName({ name, isMobile }: { name: string, isMobile: boolean }) {
+function ArtistName({ name, isMobile }: { name: string; isMobile: boolean }) {
   return (
-    <div className={isMobile ? styles.artist_title_box_mobile : styles.artist_title_box}>
+    <div
+      className={
+        isMobile ? styles.artist_title_box_mobile : styles.artist_title_box
+      }
+    >
       <div className="A1">{name}</div>
     </div>
   );
 }
 
-function AbstractShort({ text, isMobile }: { text: string, isMobile: boolean }) {
+function AbstractShort({
+  text,
+  isMobile,
+}: {
+  text: string;
+  isMobile: boolean;
+}) {
   return (
-    <div className={isMobile ? styles.artist_title_box_mobile : styles.artist_title_box}>
+    <div
+      className={
+        isMobile ? styles.artist_title_box_mobile : styles.artist_title_box
+      }
+    >
       <div className="D1">{text}</div>
     </div>
   );
@@ -140,18 +154,11 @@ function ArtworkImageBox({
         isMobile ? styles.artwork_image_box_mobile : styles.artwork_image_box
       }
     >
-      <img
-        src={`/artwork/${artistData.name}/${artistData.imageFileName[imageIndex]}`}
-        className={
-          isMobile ? styles.artwork_image_mobile : styles.artwork_image
-        }
-      />
-      <Space h={14} />
       <div
         style={{
           display: "flex",
-          justifyContent: "space-between",
-          width: "calc(100% - 60px)",
+          justifyContent: "end",
+          width: "100%",
         }}
       >
         <img
@@ -165,9 +172,11 @@ function ArtworkImageBox({
           }}
           style={{ cursor: "pointer" }}
         />
-        <p className="F" style={{ textAlign: "center" }}>{`${
+        <Space w={12} />
+        <div className="F" style={{ textAlign: "center" }}>{`${
           imageIndex + 1
-        } / ${artistData.imageFileName.length}`}</p>
+        } / ${artistData.imageFileName.length}`}</div>
+        <Space w={12} />
         <img
           src="/icon/right.svg"
           onClick={() => {
@@ -180,6 +189,13 @@ function ArtworkImageBox({
           style={{ cursor: "pointer" }}
         />
       </div>
+      <Space h={14} />
+      <img
+        src={`/artwork/${artistData.name}/${artistData.imageFileName[imageIndex]}`}
+        className={
+          isMobile ? styles.artwork_image_mobile : styles.artwork_image
+        }
+      />
     </div>
   );
 }
