@@ -21,6 +21,8 @@ export default function Page() {
   const [isBig, setIsBig] = useState<boolean>(true);
   const [dataArray, setDataArray] = useState<any[]>([]);
   const [shownImageCount, setShownImageCount] = useState<number>(8);
+  const [loadedImageCount, setLoadedImageCount] = useState<number>(0);
+  const [isAllImageLoaded, setIsAllImageLoaded] = useState<boolean>(false);
 
   useEffect(() => {
     const datas = require("/public/data/artist.json");
@@ -29,6 +31,26 @@ export default function Page() {
       setIsBig(false);
     }
   }, []);
+
+  useEffect(() => {
+    if (isMobile) {
+      if (loadedImageCount >= shownImageCount || loadedImageCount >= dataArray.length) {
+        setIsAllImageLoaded(true);
+      } else {
+        setIsAllImageLoaded(false);
+      }
+    } else {
+      if (loadedImageCount >= dataArray.length) {
+        setIsAllImageLoaded(true);
+      } else {
+        setIsAllImageLoaded(false);
+      }
+    }
+  }, [loadedImageCount]);
+
+  function onImageLoad() {
+    setLoadedImageCount((prev) => prev + 1);
+  }
 
   return (
     <div>
@@ -47,6 +69,8 @@ export default function Page() {
           dataArray={dataArray}
           shownImageCount={shownImageCount}
           setShownImageCount={setShownImageCount}
+          isAllImageLoaded={isAllImageLoaded}
+          onImageLoad={onImageLoad}
         />
         <Space h={120} />
       </div>
@@ -100,6 +124,8 @@ function ImageGrid({
   dataArray,
   shownImageCount,
   setShownImageCount,
+  onImageLoad,
+  isAllImageLoaded,
 }: {
   isMobile: boolean;
   isBig: boolean;
@@ -107,6 +133,8 @@ function ImageGrid({
   dataArray: any[];
   shownImageCount: number;
   setShownImageCount: (val: number) => void;
+  onImageLoad: () => void;
+  isAllImageLoaded: boolean;
 }) {
   const divider = isMobile ? (isBig ? 1 : 2) : isBig ? 3 : 6;
   const array = isMobile ? dataArray.slice(0, shownImageCount) : dataArray;
@@ -125,7 +153,10 @@ function ImageGrid({
       >
         {array.map((item, index) => {
           return (
-            <Link href={`/detail?index=${item.index}`}>
+            <Link
+              href={`/detail?index=${item.index}`}
+              id={`ImageItem-${index}`}
+            >
               <div className={style.artwork_image_box}>
                 <Image
                   src={`/artwork/${item.name}/${item.imageFileName[0]}`}
@@ -133,13 +164,21 @@ function ImageGrid({
                   alt={"X"}
                   placeholder="blur"
                   blurDataURL="/icon/close.svg"
-                  width={screenWidth / divider}     
+                  width={screenWidth / divider}
                   height={screenWidth / divider}
+                  onLoad={onImageLoad}
                 />
               </div>
             </Link>
           );
         })}
+        {isAllImageLoaded ? (
+          <></>
+        ) : (
+          <div className={style.loading_overlay} >
+            <img src="/icon/circle-loader.gif" className={style.loading_overlay_image} rel="preload"/>
+          </div>
+        )}
       </div>
       {isMobile ? (
         <>
