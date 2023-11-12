@@ -74,8 +74,8 @@
 .menu_close_button,
 .menu_close_button_mobile {
   position: fixed;
-  top: 14px;
-  right: 28px;
+  top: 10px;
+  right: 30px;
   cursor: pointer;
   width: 18px;
   height: 18px;

@@ -113,6 +113,15 @@
 .pricetag_default {
   cursor: pointer;
   animation: fade_anim 1s ease-out;
+  background: url('/icon/pricetag-default.png') no-repeat;
+  background-size: contain;
+  color: #fff;
+}
+
+.pricetag_default:hover {
+  background: url('/icon/pricetag-mouseover.png') no-repeat;
+  background-size: contain;
+  color: #000;
 }
 
 .pricetag_clicked {

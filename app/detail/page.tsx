@@ -39,6 +39,12 @@ export default function Page() {
   useEffect(() => {
     const image = document.createElement("img");
     for (let i = 0; i < artistData.imageFileName.length; i++) {
+      // image.addEventListener('load', () => {
+      //   console.log(`loaded ${i}`)
+      // });
+      // image.addEventListener('error', () => {
+      //   console.log(`error ${i}`)
+      // });
       image.src = `/artwork/${artistData.name}/${artistData.imageFileName[i]}`;
     }
   }, []);
@@ -68,7 +74,7 @@ export default function Page() {
             abstract={artistData.abstract_long}
             isMobile={isMobile}
           />
-          <Space h={14}/>
+          <Space h={14} />
           <ArtworkImageBox
             imageIndex={imageIndex}
             setImageIndex={setImageIndex}
@@ -161,8 +167,7 @@ function ArtworkImageBox({
           width: "100%",
         }}
       >
-        <img
-          src="/icon/left.svg"
+        <div
           onClick={() => {
             if (imageIndex == 0) {
               setImageIndex(artistData.imageFileName.length - 1);
@@ -170,15 +175,17 @@ function ArtworkImageBox({
               setImageIndex(imageIndex - 1);
             }
           }}
-          style={{ cursor: "pointer" }}
-        />
+          style={{ cursor: "pointer", display: "flex" }}
+        >
+          <img src="/icon/left.svg" />
+        </div>
+
         <Space w={12} />
         <div className="F" style={{ textAlign: "center" }}>{`${
           imageIndex + 1
         } / ${artistData.imageFileName.length}`}</div>
         <Space w={12} />
-        <img
-          src="/icon/right.svg"
+        <div
           onClick={() => {
             if (imageIndex == artistData.imageFileName.length - 1) {
               setImageIndex(0);
@@ -186,8 +193,10 @@ function ArtworkImageBox({
               setImageIndex(imageIndex + 1);
             }
           }}
-          style={{ cursor: "pointer" }}
-        />
+          style={{ cursor: "pointer", display: "flex" }}
+        >
+          <img src="/icon/right.svg" />
+        </div>
       </div>
       <Space h={14} />
       <img
@@ -195,6 +204,10 @@ function ArtworkImageBox({
         className={
           isMobile ? styles.artwork_image_mobile : styles.artwork_image
         }
+        onError={({currentTarget}) => {
+          currentTarget.onerror = null;
+          currentTarget.src = "/icon/loading-fail.jpg"
+        }}
       />
     </div>
   );

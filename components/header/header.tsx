@@ -27,27 +27,34 @@ export function Header({
             : styles.header_box
         }
       >
-        <Link href={"/fair/2023"} style={{height: 18}}>
-          <img src="/logo/short_logotype.svg"/>
+        <Link href={"/fair/2023"} style={{ height: 18 }}>
+          <img src="/logo/short_logotype.svg" />
         </Link>
 
-        <img
-          src="/icon/menu_open.svg"
+        <div
           style={{ cursor: "pointer", width: 18, height: 18 }}
           onClick={() => {
             setIsMenuOpened(true);
           }}
-        />
+        >
+          <img src="/icon/menu_open.svg" />
+        </div>
       </div>
       {isMenuOpened ? (
         <div className={isMobile ? styles.menu_box_mobile : styles.menu_box}>
-          <img
-            src="/icon/menu_close.svg"
-            className={isMobile ? styles.menu_close_button_mobile : styles.menu_close_button}
+          <div
             onClick={() => {
               setIsMenuOpened(false);
             }}
-          />
+            className={
+              isMobile
+                ? styles.menu_close_button_mobile
+                : styles.menu_close_button
+            }
+          >
+            <img src="/icon/menu_close.svg" style={{width: "100%"}}/>
+          </div>
+
           <div
             className={
               isMobile ? styles.menu_item_box_mobile : styles.menu_item_box
@@ -109,11 +116,12 @@ export function HomeHeader({
         <div className={"D2"} style={{ lineHeight: "18px" }}>
           {currentPage}
         </div>
-        <img
-          src="/icon/page_close.svg"
+        <div
           style={{ cursor: "pointer", width: 15.3, height: 15.3 }}
           onClick={onCloseButtonClick}
-        />
+        >
+          <img src="/icon/page_close.svg" />
+        </div>
       </div>
     </>
   );

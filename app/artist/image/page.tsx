@@ -98,23 +98,32 @@ function Subheader({
       <div className="D2">35 ARTISTS</div>
 
       <div style={{ display: "flex", alignItems: "center" }}>
-        <img
-          src={
-            isBig ? "/icon/bigger_selected.svg" : "/icon/bigger_unselected.svg"
-          }
-          style={{ height: "18px", width: "18px", cursor: "pointer" }}
+        <div
           onClick={() => setIsBig(true)}
-        />
+          style={{ height: "18px", width: "18px", cursor: "pointer" }}
+        >
+          <img
+            src={
+              isBig
+                ? "/icon/bigger_selected.svg"
+                : "/icon/bigger_unselected.svg"
+            }
+          />
+        </div>
+
         <Space w={15} />
-        <img
-          src={
-            isBig
-              ? "/icon/smaller_unselected.svg"
-              : "/icon/smaller_selected.svg"
-          }
+        <div
           style={{ height: "18px", width: "18px", cursor: "pointer" }}
           onClick={() => setIsBig(false)}
-        />
+        >
+          <img
+            src={
+              isBig
+                ? "/icon/smaller_unselected.svg"
+                : "/icon/smaller_selected.svg"
+            }
+          />
+        </div>
       </div>
     </div>
   );
@@ -176,9 +185,7 @@ function ImageGrid({
           );
         })}
         {isAllImageLoaded ? (
-          <>
-            
-          </>
+          <></>
         ) : (
           <>
             <div className={style.loading_overlay} />
@@ -196,13 +203,14 @@ function ImageGrid({
           <Space h={30} />
           <div className="F">더보기</div>
           <Space h={10} />
-          <img
-            src="/icon/down.svg"
+          <div
             style={{ cursor: "pointer" }}
             onClick={() => {
               setShownImageCount(shownImageCount + 8);
             }}
-          />
+          >
+            <img src="/icon/down.svg" />
+          </div>
         </>
       ) : (
         <></>
