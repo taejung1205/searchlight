@@ -678,13 +678,13 @@ const GUIDE_PRICETAG_STYLES: CSSProperties[] = [
   {
     transform: "rotate(15deg)",
     left: "30vw",
-    bottom: "10vh",
+    top: "90vh",
     position: "fixed",
   },
   {
     transform: "rotate(-30deg)",
     left: "35vw",
-    bottom: "15vh",
+    top: "85vh",
     position: "fixed",
   },
   {
@@ -699,19 +699,19 @@ const ARTISTS_PRICETAG_STYLES: CSSProperties[] = [
   {
     transform: "rotate(-15deg)",
     right: "30vw",
-    bottom: "30vh",
+    top: "70vh",
     position: "fixed",
   },
   {
     transform: "rotate(-24deg)",
     right: "40vw",
-    bottom: "40vh",
+    top: "60vh",
     position: "fixed",
   },
   {
     transform: "rotate(6deg)",
     left: "40vw",
-    bottom: "14vh",
+    top: "86vh",
     position: "fixed",
   },
 ];
@@ -719,14 +719,14 @@ const ARTISTS_PRICETAG_STYLES: CSSProperties[] = [
 const ABOUT_PRICETAG_STYLES: CSSProperties[] = [
   {
     transform: "rotate(30deg)",
-    bottom: "40vh",
+    top: "60vh",
     right: "10vw",
     position: "fixed",
   },
   {
     transform: "rotate(36deg)",
     left: "16vw",
-    bottom: "40vh",
+    top: "60vh",
     position: "fixed",
   },
   {
