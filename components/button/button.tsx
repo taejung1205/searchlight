@@ -55,18 +55,15 @@ export function PricetagButton({
 }) {
   return (
     <Suspense>
-      <div className={styles.pricetag_default} onClick={onClick} style={style}>
-        <img
-          src="/icon/pricetag-default.png"
-          alt="loading..."
-          style={{ position: "absolute", top: 0, left: 0 }}
-          width={86}
-          height={42}
-          rel="preload"
-        />
+      <div
+        className={styles.pricetag_default}
+        onClick={onClick}
+        style={style}
+        rel="preload"
+      >
         <div
           className="B"
-          style={{ color: "#fff", zIndex: 1, position: "absolute" }}
+          style={{ color: "inherit", zIndex: 1, position: "absolute" }}
         >
           {text}
         </div>
