@@ -39,6 +39,12 @@ export default function Page() {
   useEffect(() => {
     const image = document.createElement("img");
     for (let i = 0; i < artistData.imageFileName.length; i++) {
+      // image.addEventListener('load', () => {
+      //   console.log(`loaded ${i}`)
+      // });
+      // image.addEventListener('error', () => {
+      //   console.log(`error ${i}`)
+      // });
       image.src = `/artwork/${artistData.name}/${artistData.imageFileName[i]}`;
     }
   }, []);
@@ -198,6 +204,10 @@ function ArtworkImageBox({
         className={
           isMobile ? styles.artwork_image_mobile : styles.artwork_image
         }
+        onError={({currentTarget}) => {
+          currentTarget.onerror = null;
+          currentTarget.src = "/icon/loading-fail.jpg"
+        }}
       />
     </div>
   );

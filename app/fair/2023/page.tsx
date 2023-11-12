@@ -591,8 +591,8 @@ function Artists({
                   marginLeft: `${positionArray[item.index]}px`,
                 }}
               >
-                <Link href={`/detail?index=${item.index}`}>
-                  <div className="A1">{item.name}</div>
+                <Link href={`/detail?index=${item.index}`} style={{color: "inherit"}}>
+                  <div className="A1" style={{color: "inherit"}}>{item.name}</div>
                 </Link>
               </div>
             );
