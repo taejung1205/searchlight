@@ -23,10 +23,12 @@ export default function Page() {
   const [shownImageCount, setShownImageCount] = useState<number>(8);
   const [loadedImageCount, setLoadedImageCount] = useState<number>(0);
   const [isAllImageLoaded, setIsAllImageLoaded] = useState<boolean>(false);
+  const [imageFailedArray, setImageFailedArray] = useState<boolean[]>([]);
 
   useEffect(() => {
     const datas = require("/public/data/artist.json");
     setDataArray(getShuffledArray(datas));
+    setImageFailedArray(Array(datas.length).fill(false));
     if (isMobile) {
       setIsBig(false);
     }
@@ -74,6 +76,13 @@ export default function Page() {
           setShownImageCount={setShownImageCount}
           isAllImageLoaded={isAllImageLoaded}
           onImageLoad={onImageLoad}
+          imageFailedArray={imageFailedArray}
+          setImageFailed={(index: number) => {
+            setImageFailedArray((prev) => {
+              prev[index] = true;
+              return prev;
+            })}
+          }
         />
         <Space h={120} />
       </div>
@@ -138,6 +147,8 @@ function ImageGrid({
   setShownImageCount,
   onImageLoad,
   isAllImageLoaded,
+  imageFailedArray,
+  setImageFailed
 }: {
   isMobile: boolean;
   isBig: boolean;
@@ -147,6 +158,8 @@ function ImageGrid({
   setShownImageCount: (val: number) => void;
   onImageLoad: () => void;
   isAllImageLoaded: boolean;
+  imageFailedArray: boolean[];
+  setImageFailed: (index: number) => void;
 }) {
   const divider = isMobile ? (isBig ? 1 : 2) : isBig ? 3 : 6;
   const array = isMobile ? dataArray.slice(0, shownImageCount) : dataArray;
@@ -171,7 +184,7 @@ function ImageGrid({
             >
               <div className={style.artwork_image_box}>
                 <Image
-                  src={`/artwork/${item.name}/${item.imageFileName[0]}`}
+                  src={imageFailedArray[index] ? '/icon/error-mobile.png' : `/artwork/${item.name}/${item.imageFileName[0]}` }
                   className={style.artwork_image}
                   alt={"X"}
                   placeholder="blur"
@@ -179,6 +192,11 @@ function ImageGrid({
                   width={screenWidth / divider}
                   height={screenWidth / divider}
                   onLoad={onImageLoad}
+                  onError={() => {
+                    imageFailedArray[index] = true;
+                    setImageFailed(index);
+                    onImageLoad();
+                  }}
                 />
               </div>
             </Link>

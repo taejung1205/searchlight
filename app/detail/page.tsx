@@ -204,9 +204,11 @@ function ArtworkImageBox({
         className={
           isMobile ? styles.artwork_image_mobile : styles.artwork_image
         }
-        onError={({currentTarget}) => {
+        onError={({ currentTarget }) => {
           currentTarget.onerror = null;
-          currentTarget.src = "/icon/loading-fail.jpg"
+          currentTarget.src = isMobile
+            ? "/icon/error-mobile.png"
+            : "/icon/error-desktop.png";
         }}
       />
     </div>
