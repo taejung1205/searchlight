@@ -678,13 +678,13 @@ const GUIDE_PRICETAG_STYLES: CSSProperties[] = [
   {
     transform: "rotate(15deg)",
     left: "30vw",
-    top: "90vh",
+    top: "80vh",
     position: "fixed",
   },
   {
     transform: "rotate(-30deg)",
     left: "35vw",
-    top: "85vh",
+    top: "75vh",
     position: "fixed",
   },
   {
@@ -711,7 +711,7 @@ const ARTISTS_PRICETAG_STYLES: CSSProperties[] = [
   {
     transform: "rotate(6deg)",
     left: "40vw",
-    top: "86vh",
+    top: "76vh",
     position: "fixed",
   },
 ];
