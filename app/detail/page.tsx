@@ -309,7 +309,7 @@ function ContactBox({
         <div style={{ display: "flex" }}>
           <div className="D2" style={{ width: "80px" }}>{`SNS`}</div>
           <Space w={10} />
-          <a href={`https://${artistData.instagram}`}>
+          <a href={`${artistData.instagram}`}>
             <div
               className="D2"
               style={{ textDecoration: "underline" }}
