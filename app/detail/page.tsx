@@ -295,7 +295,7 @@ function ContactBox({
         <div style={{ display: "flex" }}>
           <div className="D2" style={{ width: "80px" }}>{`홈페이지`}</div>
           <Space w={10} />
-          <a href={`https://${artistData.website}`}>
+          <a href={`${artistData.website}`}>
             <div
               className="D2"
               style={{ textDecoration: "underline" }}
